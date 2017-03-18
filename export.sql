@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `ptp_vip360_user` (
   `id` int(50) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(250) NOT NULL,
   `last_name` varchar(250) NOT NULL,
-  `identifiant` varchar(250) NOT NULL,
+  `username` varchar(250) NOT NULL,
   `password` varchar(250) NOT NULL,
   `image` varchar(250) NOT NULL,
   PRIMARY KEY (`id`),
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `ptp_vip360_user` (
 -- Contenu de la table `ptp_vip360_user`
 --
 
-INSERT INTO `ptp_vip360_user` (`id`, `first_name`, `last_name`, `identifiant`, `password`, `image`) VALUES
+INSERT INTO `ptp_vip360_user` (`id`, `first_name`, `last_name`, `username`, `password`, `image`) VALUES
   (1, 'Admin', 'VIP360', 'administratorVIP360', '$2y$10$W6GbGwIgqe4oG1QC43e4iOtniPuNHaCFxPkWTHAhQO8Poe2iOUvR.', 'production/images/users/user.png'),
   (2, 'Technique', 'VIP360', 'techniqueVIP360', '$2y$10$bvoCMvNN7OfcPTA5jxQaiOYV/vda43Uhbl5wvC9d/hJJHVSKsMvAS', 'production/images/users/user.png');
 
