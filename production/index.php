@@ -30,7 +30,7 @@ require_once 'import/header.php';
                     </div>
                     <div class="x_content">
                         <p>Glisser plusieurs fichiers dans la zone ci-dessous pour un envoi multiple ou cliquer pour sélectionner les fichiers.</p>
-                        <form action="form_upload.html" class="dropzone"></form>
+                        <form action="form_upload.php" class="dropzone" id="ptpVIP360Xmls"></form>
                         <br />
                         <br />
                         <br />

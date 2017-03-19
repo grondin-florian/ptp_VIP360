@@ -45,8 +45,8 @@ CREATE TABLE IF NOT EXISTS `ptp_vip360_user` (
 --
 
 INSERT INTO `ptp_vip360_user` (`id`, `first_name`, `last_name`, `username`, `password`, `image`) VALUES
-  (1, 'Admin', 'VIP360', 'administratorVIP360', '$2y$10$W6GbGwIgqe4oG1QC43e4iOtniPuNHaCFxPkWTHAhQO8Poe2iOUvR.', 'production/images/users/user.png'),
-  (2, 'Technique', 'VIP360', 'techniqueVIP360', '$2y$10$bvoCMvNN7OfcPTA5jxQaiOYV/vda43Uhbl5wvC9d/hJJHVSKsMvAS', 'production/images/users/user.png');
+  (1, 'Admin', 'VIP360', 'administratorVIP360', '$2y$10$W6GbGwIgqe4oG1QC43e4iOtniPuNHaCFxPkWTHAhQO8Poe2iOUvR.', 'user.png'),
+  (2, 'Technique', 'VIP360', 'techniqueVIP360', '$2y$10$bvoCMvNN7OfcPTA5jxQaiOYV/vda43Uhbl5wvC9d/hJJHVSKsMvAS', 'user.png');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
