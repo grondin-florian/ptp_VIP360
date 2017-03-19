@@ -4,6 +4,12 @@ require_once 'config.php';
 
 session_start();
 
+if($_SERVER['REQUEST_URI'] != __PROD__.'login.php')
+{
+    if (!array_key_exists('logged_in', $_SESSION))
+        header('Location: login.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -25,12 +31,24 @@ session_start();
     <link href="<?php echo __ROOT__; ?>vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- Animate.css -->
     <link href="<?php echo __ROOT__; ?>vendors/animate.css/animate.min.css" rel="stylesheet">
+    <!-- Dropzone.js -->
+    <link href="<?php echo __ROOT__; ?>vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="<?php echo __ROOT__; ?>build/css/custom.min.css" rel="stylesheet">
 
     <!-- Custom Style -->
-    <link href="<?php echo __PROD__; ?>css/style.css" rel="stylesheet">
+    <link href="<?php echo __CSSDIR__; ?>style.css" rel="stylesheet">
 </head>
 
 <body class="<?php echo $body_class; ?>">
+
+<?php
+    if($_SERVER['REQUEST_URI'] != __PROD__.'login.php') {
+?>
+    <div class="container body">
+        <div class="main_container">
+<?php
+        require_once 'menu.php';
+    }
+?>

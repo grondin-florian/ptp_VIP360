@@ -18,15 +18,15 @@ if(array_key_exists('username', $_POST) && trim($_POST['username']) != ''
     }
     else
     {
-        $_SESSION['loged_in'] = true;
+        $_SESSION['logged_in'] = true;
         $_SESSION['username'] = $user->getUsername();
         $_SESSION['first_name'] = $user->getFirstName();
         $_SESSION['last_name'] = $user->getLastName();
+        $_SESSION['img'] = $user->getImg();
 
         header('Location: '.__PROD__);
     }
 }
-echo $_SESSION['username'].' : '.$_SESSION['first_name'].' '.$_SESSION['last_name'];
 ?>
 
 
