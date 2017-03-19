@@ -2,5 +2,5 @@
 
 session_start();
 
-if(!isset($_SESSION['loged_in']))
+if(!array_key_exists('loged_in', $_SESSION))
     header('Location: login.php');

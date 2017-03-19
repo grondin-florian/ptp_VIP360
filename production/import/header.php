@@ -18,16 +18,19 @@ session_start();
     <title><?php echo $title_page; ?></title>
 
     <!-- Bootstrap -->
-    <link href="<?php echo __ROOT__; ?>/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo __ROOT__; ?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="<?php echo __ROOT__; ?>/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo __ROOT__; ?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="<?php echo __ROOT__; ?>/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="<?php echo __ROOT__; ?>vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- Animate.css -->
-    <link href="<?php echo __ROOT__; ?>/vendors/animate.css/animate.min.css" rel="stylesheet">
+    <link href="<?php echo __ROOT__; ?>vendors/animate.css/animate.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="<?php echo __ROOT__; ?>/build/css/custom.min.css" rel="stylesheet">
+    <link href="<?php echo __ROOT__; ?>build/css/custom.min.css" rel="stylesheet">
+
+    <!-- Custom Style -->
+    <link href="<?php echo __PROD__; ?>css/style.css" rel="stylesheet">
 </head>
 
 <body class="<?php echo $body_class; ?>">
