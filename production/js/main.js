@@ -47,5 +47,7 @@ jQuery(document).ready(function($) {
                 });
             }
         });
+
+        // TODO : Fixed #xml-sidebar
     }
 });

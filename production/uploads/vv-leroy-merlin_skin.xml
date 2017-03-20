@@ -1,0 +1,2192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<krpano version="1.19">
+
+    
+  <!-- Spot Style - TOUT DROIT -->
+  <style name="IconTOUTDROIT"
+         url="%FIRSTXML%/spots/hotspot_animated_user_defaultpoint0.png"
+         visible="false"
+         frame="0"
+         lastframe="34"
+         framewidth="115"
+         frameheight="115"
+         stopspotsequence="false"
+         crop="0|0|115|115"
+         rotate="270"
+         onloaded="startspotanimation(0.1);"
+         onhover="onhoverIconTOUTDROIT"
+         onout="onoutIconTOUTDROIT"
+
+
+         width="60"
+         height="prop"
+         />
+
+  <action name="onhoverIconTOUTDROIT">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconTOUTDROIT">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+      
+  <!-- Picture Spot Style - Default Picture Spot Style -->
+
+  <style name="RectPictureDefaultPictureSpotStyle"
+         distorted="true"
+         visible="false"
+         scale="1.0" 
+         onhover="onhoverRectPictureDefaultPictureSpotStyle"
+         onout="onoutRectPictureDefaultPictureSpotStyle"
+         />
+  <action name="onhoverRectPictureDefaultPictureSpotStyle">
+    showTooltip('hotspot');
+  </action>
+  <action name="onoutRectPictureDefaultPictureSpotStyle">
+    hideTooltip();
+    
+  </action>
+
+
+
+    
+  <!-- Spot Style - DROITE -->
+  <style name="IconDROITE"
+         url="%FIRSTXML%/spots/hotspot_animated_user_defaultpoint1.png"
+         visible="false"
+         frame="0"
+         lastframe="34"
+         framewidth="115"
+         frameheight="115"
+         stopspotsequence="false"
+         crop="0|0|115|115"
+         onloaded="startspotanimation(0.1);"
+         onhover="onhoverIconDROITE"
+         onout="onoutIconDROITE"
+
+
+         width="60"
+         height="prop"
+         />
+
+  <action name="onhoverIconDROITE">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDROITE">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - GAUCHE -->
+  <style name="IconGAUCHE"
+         url="%FIRSTXML%/spots/hotspot_animated_user_defaultpoint2.png"
+         visible="false"
+         frame="0"
+         lastframe="34"
+         framewidth="115"
+         frameheight="115"
+         stopspotsequence="false"
+         crop="0|0|115|115"
+         rotate="180"
+         onloaded="startspotanimation(0.1);"
+         onhover="onhoverIconGAUCHE"
+         onout="onoutIconGAUCHE"
+
+
+         width="60"
+         height="prop"
+         />
+
+  <action name="onhoverIconGAUCHE">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconGAUCHE">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+<!-- ********** -->
+<!-- Analytics -->
+<!-- id : analytics -->
+<!-- ********** -->
+
+<ptplugin name="analytics" engine="kolorAnalytics">
+	<settings>
+		<option name="source" value="google" type="string" />
+		<option name="tracking_id" value="UA-67317939-1" type="string" />
+		<option name="force_ssl" value="false" type="bool" />
+		<option name="force_test" value="false" type="bool" />
+		<option name="start_page" value="vv-leroy-merlin" type="string" />
+		<option name="start_title" value="Leroy Merlin" type="string" />
+		<option name="start_lang" value="fr" type="string" />
+		<option name="use_i18n" value="true" type="bool" />
+	</settings>
+</ptplugin>
+
+<action name="kolorAnalyticsJsReady_analytics">
+	set(ptplugin[analytics].jsready, true);
+</action>
+
+<action name="activate_analytics">
+	if(ptplugin[analytics].jsready,
+		stopdelayedcall(delay_analytics_active);
+		js(invokePluginFunction(analytics, toggleDeactivation, false));
+	,
+		delayedcall(delay_analytics_active, 0.1, activate_analytics(););
+	);
+</action>
+
+<action name="deactivate_analytics">
+	if(ptplugin[analytics].jsready,
+		stopdelayedcall(delay_analytics_active);
+		js(invokePluginFunction(analytics, toggleDeactivation, true));
+	,
+		delayedcall(delay_analytics_active, 0.1, deactivate_analytics(););
+	);
+</action>
+
+<action name="sendPage_analytics">
+	if(ptplugin[analytics].jsready,
+		stopdelayedcall(delay_analytics_page);
+		js(invokePluginFunction(analytics, sendPageview, %1, %2));
+	,
+		delayedcall(delay_analytics_page,0.5,sendPage_analytics(%1,%2));
+	);
+</action>
+
+<!-- 
+sendEvent_analytics action :
+* param1 : category
+* param2 : action
+* param3 : label
+* param4 : number value
+-->
+<action name="sendEvent_analytics">
+	if(ptplugin[analytics].jsready,
+		stopdelayedcall(delay_analytics_event);
+		js(invokePluginFunction(analytics, sendEvent, %1, %2, %3, %4));
+	,
+		delayedcall(delay_analytics_event,0.5,sendEvent_analytics(%1,%2,%3,%4));
+	);
+</action>
+
+<action name="changeLanguage_analytics">
+	if(ptplugin[analytics].jsready,
+		stopdelayedcall(delay_analytics_lang);
+		js(invokePluginFunction(analytics, changeLanguage));
+	,
+		delayedcall(delay_analytics_lang,0.1,changeLanguage_analytics());
+	);
+</action>
+
+<events name="kolorAnalyticsEvents_analytics" 
+	keep="true"
+	onTourStart="sendEvent_analytics('panotour','tour start', 'Leroy Merlin');"
+	onnewpano="sendPage_analytics(get(scene[get(xml.scene)].name), get(scene[get(xml.scene)].titleid));"
+	changetourlanguage="changeLanguage_analytics();"
+	/>
+
+<!-- ********** -->
+<!-- Menu contextuel -->
+<!-- id : contextmenu -->
+<!-- ********** -->
+  <contextmenu fullscreen="false" versioninfo="false" touch="true">
+    <item name="author" onclick="getmessage(urltoopen,project_author_url);openurl(get(urltoopen),_blank);" />
+    <item name="website1" onclick="getmessage(urltoopen,contextmenuwebsiteurl1);openurl(get(urltoopen),_blank);" />
+    <item name="fullscreenentry" onclick="enterFullscreen();
+" separator="true"/>
+  </contextmenu>
+
+  <events name="contextmenuevents" keep="true" 
+    onenterfullscreen="updateContextMenu" onexitfullscreen="updateContextMenu" 
+    onxmlcomplete="updateContextMenu" 
+    changetourlanguage="updateContextMenu" 
+    />
+  <events name="contextmenuvrevents" keep="true" 
+    onvravailable="updateContextMenu();" onvrunavailable="updateContextMenu();"
+    devices="html5"
+    />
+  <action name="updateContextMenu">
+    getmessage(contextmenu.item[author].caption, project_author_name);
+    getmessage(contextmenu.item[website1].caption, contextmenuopenwebsitelabel1);
+    if (device.fullscreensupport,
+      if(tour_fullscreen,
+        getmessage(contextmenu.item[fullscreenentry].caption, contextmenucloseFsLabel);
+        set(contextmenu.item[fullscreenentry].onclick, exitFullscreen();
+);
+       ,
+        getmessage(contextmenu.item[fullscreenentry].caption, contextmenuopenFsLabel);
+        set(contextmenu.item[fullscreenentry].onclick, enterFullscreen();
+);
+      );
+     ,
+      set(contextmenu.item[fullscreenentry].visible, false);
+    );
+  </action>
+
+  <!-- ************ -->
+  <!-- iControl Bar -->
+  <!-- ************ -->
+
+
+  <krpano theme11barbuilt="false" theme11backgroundwidthwhenclosed="0" theme11backgroundwidthwhenopened="0" theme11IsOpened="false" />
+  <events name="theme11events" onxmlcomplete="theme11buildMenuBar();" keep="true"/>
+  <action name="theme11buildMenuBar">
+    ifnot (theme11barbuilt, theme11buildMenu(); set(theme11barbuilt, true););
+  </action>
+
+  <style name="theme11_btn_style"
+         keep="true"
+         edge="right"
+         align="right"
+         x="0" y="0"
+         width="40" height="40"
+         crop="0|0|60|60"
+         onovercrop="0|60|60|60"
+         ondowncrop="0|120|60|60"
+         onhover="showTooltip('plugin', theme11menuTooltipStyle, bottom);"
+         onout="hideTooltip();"
+         />
+
+  <layer name="theme11_menu_bg"
+         keep="true"
+         type="container"
+         zorder="3"
+         width="40"
+         height="40"
+         align="bottom"
+         x="0" y="10"
+         maskchildren="true"
+         rotate="0"
+         visible="false"
+         >
+
+
+    <layer name="theme11btn_ctrlmode_move_to"
+            url="%FIRSTXML%/graphics/studiocontrolbar/btn_move_to.png"
+            style="theme11_btn_style"
+            tooltip="studioControlBarctrlmodeMoveTip"
+            onclick="setControlModeMoveTo();
+"
+            visible="false"
+            devices="desktop"
+            />
+    <layer name="theme11btn_ctrlmode_drag_to"
+            url="%FIRSTXML%/graphics/studiocontrolbar/btn_drag_to.png"
+            style="theme11_btn_style"
+            tooltip="studioControlBarctrlmodeDragTip"
+            onclick="setControlModeDragTo();
+"
+            visible="false"
+            devices="desktop"
+            />
+
+    <layer name="theme11btn_left"
+            url="%FIRSTXML%/graphics/studiocontrolbar/btn_move_left.png"
+            ondown="viewControlMoveLeft(false);
+"
+            onup="viewControlMoveHoriStop();
+"
+            style="theme11_btn_style"
+            visible="false"
+            tooltip="studioControlBarmoveLeftTip"
+            devices="desktop"
+            />
+    <layer name="theme11btn_right"
+            url="%FIRSTXML%/graphics/studiocontrolbar/btn_move_right.png"
+            ondown="viewControlMoveRight(false);
+"
+            onup="viewControlMoveHoriStop();
+"
+            style="theme11_btn_style"
+            visible="false"
+            tooltip="studioControlBarmoveRightTip"
+            devices="desktop"
+            />
+
+    <layer name="theme11btn_up"
+            url="%FIRSTXML%/graphics/studiocontrolbar/btn_move_up.png"
+            ondown="viewControlMoveUp(false);
+"
+            onup="viewControlMoveVertStop();
+"
+            style="theme11_btn_style"
+            visible="false"
+            tooltip="studioControlBarmoveUpTip"
+            devices="desktop"
+            />
+    <layer name="theme11btn_down"
+            url="%FIRSTXML%/graphics/studiocontrolbar/btn_move_down.png"
+            ondown="viewControlMoveDown(false);
+"
+            onup="viewControlMoveVertStop();
+"
+            style="theme11_btn_style"
+            visible="false"
+            tooltip="studioControlBarmoveDownTip"
+            devices="desktop"
+            />
+
+
+
+
+
+    <layer name="theme11btn_openfs"
+            url="%FIRSTXML%/graphics/studiocontrolbar/btn_enter_fs.png"
+            onclick="enterFullscreen();
+"
+            style="theme11_btn_style"
+            visible="false"
+            devices="fullscreensupport"
+            tooltip="studioControlBaropenFsTip"
+            />
+    <layer name="theme11btn_closefs"
+            url="%FIRSTXML%/graphics/studiocontrolbar/btn_close_fs.png"
+            onclick="exitFullscreen();
+"
+            style="theme11_btn_style"
+            visible="false"
+            devices="fullscreensupport"
+            tooltip="studioControlBarcloseFsTip"
+            />
+
+
+
+    <layer name="theme11btn_display_help"
+            url="%FIRSTXML%/graphics/studiocontrolbar/btn_help.png"
+            onclick="theme11displayHelp();"
+            style="theme11_btn_style"
+            devices="desktop"
+            visible="false"
+            tooltip="studioControlBardisplayHelpTip"
+            />
+    <layer name="theme11btn_close_help"
+            url="%FIRSTXML%/graphics/studiocontrolbar/btn_help.png"
+            onclick="theme11closeHelp();"
+            style="theme11_btn_style"
+            visible="false"
+            devices="desktop"
+            tooltip="studioControlBarhideHelpTip"
+            />
+
+
+
+    <layer name="theme11btn_hidecontrols"
+           url="%FIRSTXML%/graphics/studiocontrolbar/btn_hide_controls.png"
+           style="theme11_btn_style"
+           onclick="theme11hideMenuControls();hideTourControls();
+"
+           visible="false"
+           tooltip="studioControlBarhideControlsTip"
+           />
+    <layer name="theme11btn_showcontrols"
+           url="%FIRSTXML%/graphics/studiocontrolbar/btn_show_controls.png"
+           style="theme11_btn_style"
+           onclick="theme11showMenuControls();showTourControls();
+"
+           tooltip="studioControlBardisplayControlsTip"
+           visible="false"
+           />
+ </layer>
+
+
+
+
+	<events name="theme11controlmodechangedevent" 
+		oncontrolmodechanged="theme11updateControlModeButtons();" 
+		keep="true" />
+	<action name="theme11HideControlModeButtons">
+		set(layer[theme11btn_ctrlmode_move_to].visible, false);
+		set(layer[theme11btn_ctrlmode_drag_to].visible, false);
+	</action>
+	<action name="theme11ShowControlModeButtons">
+		if (tour_controlmodemousetype == "moveto",
+			set(layer[theme11btn_ctrlmode_drag_to].visible, true);
+			set(layer[theme11btn_ctrlmode_move_to].visible, false);
+		,
+			set(layer[theme11btn_ctrlmode_move_to].visible, true);
+			set(layer[theme11btn_ctrlmode_drag_to].visible, false);
+		);
+	</action>
+	<action name="theme11updateControlModeButtons">
+	if (device.desktop,
+		set(theme11DisplayControlModeButtons, false);
+		if (theme11IsOpened, set(theme11DisplayControlModeButtons, true););
+		if (theme11DisplayControlModeButtons,
+			theme11ShowControlModeButtons();
+		,
+			theme11HideControlModeButtons();
+		);
+	,
+		theme11HideControlModeButtons();
+	);
+	</action>
+
+
+  <action name="theme11hideMenuControls">
+    set(theme11IsOpened, false);
+    set(layer[theme11btn_hidecontrols].visible, false);
+    set(layer[theme11btn_showcontrols].visible, true);
+
+
+if (device.desktop,
+	set(layer[theme11btn_up].visible, false);
+	set(layer[theme11btn_down].visible, false);
+);
+if (device.desktop,
+	set(layer[theme11btn_left].visible, false);
+	set(layer[theme11btn_right].visible, false);
+);
+	theme11updateFullscreenButtons();
+	theme11updateHelpButtons();
+
+
+
+
+	theme11updateControlModeButtons();
+
+
+
+    set(layer[theme11_menu_bg].width , get(theme11backgroundwidthwhenclosed));
+	set(layer[theme11_menu_bg].visible, true);
+  </action>
+  <action name="theme11showMenuControls">
+    set(theme11IsOpened, true);
+    set(layer[theme11btn_hidecontrols].visible, true);
+    set(layer[theme11btn_showcontrols].visible, false);
+	set(layer[theme11_menu_bg].visible, true);
+
+
+if (device.desktop,
+	set(layer[theme11btn_up].visible, true);
+	set(layer[theme11btn_down].visible, true);
+);
+if (device.desktop,
+	set(layer[theme11btn_left].visible, true);
+	set(layer[theme11btn_right].visible, true);
+);
+	theme11updateFullscreenButtons();
+	theme11updateHelpButtons();
+
+
+
+
+	theme11updateControlModeButtons();
+
+
+
+    set(layer[theme11_menu_bg].width, get(theme11backgroundwidthwhenopened));
+  </action>
+
+  <layer name="theme11helpScreenBg"
+         align="center"
+         keep="true"
+         onclick="theme11closeHelp();"
+         url="%FIRSTXML%/graphics/studiocontrolbar/help_screen_bg.png"
+         visible="false"
+         rotate="-90"
+         height="50%"
+         width="prop"
+         zorder="97"
+         x="100%" />
+  <layer name="theme11helpScreenFg"
+         align="center"
+         keep="true"
+         onclick="theme11closeHelp();"
+         url="%FIRSTXML%/graphics/studiocontrolbar/help_screen_fg.png"
+         height="50%"
+         width="prop"
+         visible="false"
+         rotate="90"
+         zorder="98"
+         x="-100%"
+         displayed="false" />
+  <action name="theme11displayHelp">
+  if (device.desktop,
+    set(layer[theme11helpScreenFg].displayed,true);
+    set(layer[theme11helpScreenBg].visible,true);
+    set(layer[theme11helpScreenFg].visible,true);
+    tween(layer[theme11helpScreenFg].rotate,0, 1);
+    tween(layer[theme11helpScreenFg].x,0, 1);
+    tween(layer[theme11helpScreenBg].rotate,0, 1);
+    tween(layer[theme11helpScreenBg].x,0, 1);
+    theme11updateHelpButtons();
+  );
+  </action>
+  <action name="theme11closeHelp">
+  if (device.desktop,
+    set(layer[theme11helpScreenFg].displayed,false);
+    tween(layer[theme11helpScreenFg].rotate,  90, 1, easeOutQuad, set(layer[theme11helpScreenFg].visible,false););
+    tween(layer[theme11helpScreenFg].x, -100%, 1);
+    tween(layer[theme11helpScreenBg].rotate, -90, 1, easeOutQuad, set(layer[theme11helpScreenBg].visible,false););
+    tween(layer[theme11helpScreenBg].x, 100%, 1);
+    theme11updateHelpButtons();
+  );
+  </action>
+	<action name="theme11HideHelpButtons">
+		set(layer[theme11btn_display_help].visible, false);
+		set(layer[theme11btn_close_help].visible, false);
+	</action>
+	<action name="theme11ShowHelpButtons">
+		if (layer[theme11helpScreenFg].displayed,
+			set(layer[theme11btn_close_help].visible, true);
+			set(layer[theme11btn_display_help].visible, false);
+		,
+			set(layer[theme11btn_display_help].visible, true);
+			set(layer[theme11btn_close_help].visible, false);
+		);
+	</action>
+	<action name="theme11updateHelpButtons">
+	if (device.desktop,
+		set(theme11DisplayHelpButtons, false);
+		if (theme11IsOpened, set(theme11DisplayHelpButtons, true););
+		if (theme11DisplayHelpButtons,
+			theme11ShowHelpButtons();
+		,
+			theme11HideHelpButtons();
+		);
+	,
+		theme11HideHelpButtons();
+	);
+	</action>
+
+
+
+
+  <events name="theme11menufullscreenchangeevent"
+          onenterfullscreen="theme11updateFullscreenButtons();"
+          onexitfullscreen="theme11updateFullscreenButtons();"
+          keep="true"/>
+	<action name="theme11HideFullscreenButtons">
+		set(layer[theme11btn_openfs].visible , false);
+		set(layer[theme11btn_closefs].visible, false);
+	</action>
+	<action name="theme11ShowFullscreenButtons">
+		if (device.fullscreensupport,
+			if(tour_fullscreen,
+				set(layer[theme11btn_openfs].visible , false);
+				set(layer[theme11btn_closefs].visible, true);
+			,
+				set(layer[theme11btn_openfs].visible ,true);
+				set(layer[theme11btn_closefs].visible,false);
+			);
+		,
+			theme11HideFullscreenButtons();
+		);
+	</action>
+	<action name="theme11updateFullscreenButtons">
+		set(theme11DisplayFullscreenButtons, false);
+		if (theme11IsOpened, set(theme11DisplayFullscreenButtons, true););
+		if (theme11DisplayFullscreenButtons,
+			theme11ShowFullscreenButtons();
+		,
+			theme11HideFullscreenButtons();
+		);
+	</action>
+
+
+
+<layer name="theme11menuTooltipStyle"
+	keep="true"
+	enabled="false"
+	capture="false"
+	url="%FIRSTXML%/graphics/textfield.swf"
+	align="center"
+	background="false"
+	border="false"
+	textshadow="1" textshadowrange="4.0" textshadowangle="45" textshadowcolor="0x000000" textshadowalpha="1"
+	css="color:#ffffff;font-family:Coco Gothic;font-size:13px;text-align:left;"
+	height="20"
+	autoheight="true"
+	autowidth="auto"
+	xoffset="0"
+	yoffset="0"
+	padding="2"
+	selectable="false"
+	zorder="0"
+	visible="false"
+	html=""
+	edge="bottom"
+/>
+  <action name="theme11buildMenu">
+    
+    set(theme11button_pos, 0);
+
+	set(theme11backgroundwidthwhenclosed, 40);
+    set(layer[theme11btn_hidecontrols].x, get(theme11button_pos));
+    set(layer[theme11btn_showcontrols].x, get(theme11button_pos));
+    inc(theme11button_pos, 45);
+
+
+
+      if (device.desktop,
+        set(layer[theme11btn_display_help].x, get(theme11button_pos));
+        set(layer[theme11btn_close_help].x  , get(theme11button_pos));
+        inc(theme11button_pos, 45);
+      );
+
+      if (device.fullscreensupport,
+        set(layer[theme11btn_openfs].x , get(theme11button_pos));
+        set(layer[theme11btn_closefs].x, get(theme11button_pos));
+        inc(theme11button_pos, 45);
+      );
+
+
+
+
+
+    if (device.desktop,
+      set(layer[theme11btn_ctrlmode_drag_to].x, get(theme11button_pos));
+      set(layer[theme11btn_ctrlmode_move_to].x, get(theme11button_pos));
+      inc(theme11button_pos, 45);
+    );
+
+
+
+      if (device.desktop,
+        set(layer[theme11btn_right].x, get(theme11button_pos));
+        inc(theme11button_pos, 45);
+        set(layer[theme11btn_left].x, get(theme11button_pos));
+        inc(theme11button_pos, 45);
+      );
+
+      if (device.desktop,
+        set(layer[theme11btn_down].x, get(theme11button_pos));
+        inc(theme11button_pos, 45);
+        set(layer[theme11btn_up].x, get(theme11button_pos));
+        inc(theme11button_pos, 45);
+      );
+
+      dec(theme11button_pos, 5);
+
+      set(theme11backgroundwidthwhenopened, get(theme11button_pos));
+      set(layer[theme11_menu_bg].width, get(theme11backgroundwidthwhenopened));
+	
+	
+	
+    </action>
+
+	<events name="theme11StartTourEvents" onTourStart="theme11CallOnStartTour();" keep="true" />
+	
+	<action name="theme11CallOnStartTour">
+		
+		theme11showMenuControls();
+	</action>
+
+
+<!-- ********** -->
+<!-- En-tête -->
+<!-- id : header -->
+<!-- ********** -->
+
+  <layer name="header"
+         keep="true"
+         url="%FIRSTXML%/graphics/header/en-tete.png" 
+         align="top"
+         x="0"
+         y="0"
+         zorder="4"
+         enabled="false"
+         capture="true"
+         visible="false"
+         
+         height="7%"
+
+         />
+
+  <events name="headerevents"
+    onTourStart="showheader();"
+    keep="true" />
+
+  <action name="showheader">
+    set(layer[header].visible, true);
+  </action>
+
+<!-- ********** -->
+<!-- LOGO LEROY -->
+<!-- id : button1 -->
+<!-- ********** -->
+
+  <layer name="button1"
+         keep="true"
+         url="%FIRSTXML%/graphics/button1/leroy-merlin-baseline.png" 
+         align="bottomright"
+         x="20"
+         y="0"
+         zorder="5"
+         visible="false"
+         onclick="button1OnClick"
+         width="8%"
+         height="prop"
+         />
+  <action name="button1OnClick">openWebsite_websiteViewer(button1websiteViewer|websiteViewer|displaywebsitewebsite_url, button1websiteViewer|websiteViewer|displaywebsitewebsite_title);
+
+
+  </action>
+
+  <events name="button1events" 
+    onTourStart="showbutton1();"
+    keep="true" />
+  <action name="hidebutton1">set(layer[button1].visible, false);</action>
+  <action name="showbutton1">set(layer[button1].visible, true);</action>
+
+
+<!-- ********** -->
+<!-- Bouton MENU -->
+<!-- id : button3 -->
+<!-- ********** -->
+
+  <layer name="button3"
+         keep="true"
+         url="%FIRSTXML%/graphics/button3/bouton-menu.png" 
+         align="topleft"
+         x="0"
+         y="0"
+         zorder="6"
+         visible="false"
+         onclick="button3OnClick"
+         height="7%"
+         width="prop"
+         />
+  <action name="button3OnClick">
+	sidebaropencloseaction();
+
+  </action>
+
+  <events name="button3events" 
+    onTourStart="showbutton3();"
+    keep="true" />
+  <action name="hidebutton3">set(layer[button3].visible, false);</action>
+  <action name="showbutton3">set(layer[button3].visible, true);</action>
+
+  <include url="%FIRSTXML%/graphics/alpo.sidebar-v1.0.32/sidebar.xml" /> <sidebar name="settings"  groupCount="11"      groupName0="get:data[fr_panogroup50_title].content" groupMessage0="panogroup50_title" totalPanos0="1" group0Contents="pano39|" isRealGroup_0="true"  SceneName_0_0="pano39"       groupName1="get:data[fr_panogroup53_title].content" groupMessage1="panogroup53_title" totalPanos1="1" group1Contents="pano42|" isRealGroup_1="true"  SceneName_1_0="pano42"       groupName2="get:data[fr_panogroup54_title].content" groupMessage2="panogroup54_title" totalPanos2="1" group2Contents="pano43|" isRealGroup_2="true"  SceneName_2_0="pano43"       groupName3="get:data[fr_panogroup55_title].content" groupMessage3="panogroup55_title" totalPanos3="1" group3Contents="pano44|" isRealGroup_3="true"  SceneName_3_0="pano44"       groupName4="get:data[fr_panogroup56_title].content" groupMessage4="panogroup56_title" totalPanos4="1" group4Contents="pano45|" isRealGroup_4="true"  SceneName_4_0="pano45"       groupName5="get:data[fr_panogroup57_title].content" groupMessage5="panogroup57_title" totalPanos5="1" group5Contents="pano46|" isRealGroup_5="true"  SceneName_5_0="pano46"       groupName6="get:data[fr_panogroup58_title].content" groupMessage6="panogroup58_title" totalPanos6="1" group6Contents="pano47|" isRealGroup_6="true"  SceneName_6_0="pano47"       groupName7="get:data[fr_panogroup59_title].content" groupMessage7="panogroup59_title" totalPanos7="1" group7Contents="pano48|" isRealGroup_7="true"  SceneName_7_0="pano48"       groupName8="get:data[fr_panogroup60_title].content" groupMessage8="panogroup60_title" totalPanos8="11" group8Contents="pano49|pano39512|pano39514|pano39533|pano39519|pano39521|pano39520|pano39518|pano39517|pano39515|pano39516|" isRealGroup_8="true"  SceneName_8_0="pano49"  SceneName_8_1="pano39512"  SceneName_8_2="pano39514"  SceneName_8_3="pano39533"  SceneName_8_4="pano39519"  SceneName_8_5="pano39521"  SceneName_8_6="pano39520"  SceneName_8_7="pano39518"  SceneName_8_8="pano39517"  SceneName_8_9="pano39515"  SceneName_8_10="pano39516"       groupName9="get:data[fr_panogroup51_title].content" groupMessage9="panogroup51_title" totalPanos9="1" group9Contents="pano40|" isRealGroup_9="true"  SceneName_9_0="pano40"       groupName10="get:data[fr_panogroup52_title].content" groupMessage10="panogroup52_title" totalPanos10="1" group10Contents="pano41|" isRealGroup_10="true"  SceneName_10_0="pano41"    sbColor="ffffff" sbColorAlpha="0.00" sbAlign="left" startOpened="false" sbCloseIfnew="false" sbIconPosition="top" sbIconAlpha="100" sbIconAlphaSep="false" sbIconAlphaSepVal="90" sbIconOverState="false" sbIconOpenedState="true" sbIconOpenedOverState="true" sbIconPositionX="-7" sbIconPositionY="130" sbIconPositionOpenUse="false" sbIconPositionOpen="top" sbIconPositionOpenX="0" sbIconPositionOpenY="0" sbIconHideShowDelay="true" sbIconDelay="6" sbMenuType="hierarchical"  sbIconUrl="%FIRSTXML%/graphics/alpo.sidebar-v1.0.32/"      sbOpenedIconUrl="%FIRSTXML%/graphics/alpo.sidebar-v1.0.32/bouton-fermer1.png"       sbOpenedOverIconUrl="%FIRSTXML%/graphics/alpo.sidebar-v1.0.32/bouton-fermer2.png"    textFieldUrl="%FIRSTXML%/graphics/textfield.swf"  scrollUrl="%FIRSTXML%/graphics/scrollarea.swf"   scrollAltUrl="%FIRSTXML%/graphics/scrollarea.js"  sbcurrent_PanoTxt="alpo_sidebar_fullsbcurrent_PanoTxt" sbcurrent_PanoTxtFont="tahoma" sbcurrent_PanoTxtFontSize="14" sbcurrent_PanoTxtColor="535353" sbcurrent_PanoTxtAlpha="1.00" sbcurrent_PanoTxtAlign="center"  sbcurrent_PanoTxtFontItalic=""   sbcurrent_PanoTxtFontBold=""   sbcurrent_PanoTxtFontTD=""  sbcurrent_PanoNameTxtColor="66b239" sbcurrent_PanoNameTxtSize="18"  sbcurrent_PanoNameTxtDecorU1="" sbcurrent_PanoNameTxtDecorU2=""   sbcurrent_PanoNameTxtDecorB1="" sbcurrent_PanoNameTxtDecorB2=""   sbcurrent_PanoNameTxtDecorI1="" sbcurrent_PanoNameTxtDecorI2=""  sbOpenCloseUseOpener="true" sbOpenCloseUseButton="true" sbContextMenuItem="true" sbZorder="1" /> <style name="sbBlocks" keep="true" type="container" bgcapture="false" bgalpha="0.0" width="100%" accuracy="1" />  <style name="sbOpenerST" keep="true" align="left" />  <style name="sbIconST" visible="true" /> <events name="sbBlocksHEv" keep="true" onresize="sbBlocksHEvAct()" /> <action name="sbBlocksHEvAct">    calcBlock1H();    calcBlock2H();    calcBlock3H();    calcBlock4H();    </action>  <style name="sbBlock1ST" parent="sb" align="top" minheight="0" maxheight="0" y="0"  bgcolor="0xe880ff" bgalpha="0.00"  /> <layer name="sbBlock1" style="sbBlocks|sbBlock1ST" /> <action name="calcBlock1H"> calc(layer[sbBlock1].height, 10 * stageheight * 0.01); if(layer[sbBlock1].height LT layer[sbBlock1].minheight AND layer[sbBlock1].minheight != 0, copy(layer[sbBlock1].height, layer[sbBlock1].minheight); ); if(layer[sbBlock1].height GT layer[sbBlock1].maxheight AND layer[sbBlock1].maxheight != 0, copy(layer[sbBlock1].height, layer[sbBlock1].maxheight); ); calc(layer[sbBlock1].realBlockY, 0 + 0); </action>   <style name="sbBlock2ST" parent="sbBlock1" align="bottom" edge="top" minheight="7" maxheight="7" y="-0"  bgcolor="0x66b239" bgalpha="1.00"  /> <layer name="sbBlock2" style="sbBlocks|sbBlock2ST" /> <action name="calcBlock2H"> calc(layer[sbBlock2].height, 0 * stageheight * 0.01); if(layer[sbBlock2].height LT layer[sbBlock2].minheight AND layer[sbBlock2].minheight != 0, copy(layer[sbBlock2].height, layer[sbBlock2].minheight); ); if(layer[sbBlock2].height GT layer[sbBlock2].maxheight AND layer[sbBlock2].maxheight != 0, copy(layer[sbBlock2].height, layer[sbBlock2].maxheight); ); calc(layer[sbBlock2].realBlockY, layer[sbBlock1].realBlockY + layer[sbBlock1].height + 0); </action>   <style name="sbBlock3ST" parent="sbBlock2" align="bottom" edge="top" minheight="0" maxheight="0" y="-0"  bgcolor="0xffffff" bgalpha="1.00"  /> <layer name="sbBlock3" style="sbBlocks|sbBlock3ST" /> <action name="calcBlock3H"> calc(layer[sbBlock3].height, 10 * stageheight * 0.01); if(layer[sbBlock3].height LT layer[sbBlock3].minheight AND layer[sbBlock3].minheight != 0, copy(layer[sbBlock3].height, layer[sbBlock3].minheight); ); if(layer[sbBlock3].height GT layer[sbBlock3].maxheight AND layer[sbBlock3].maxheight != 0, copy(layer[sbBlock3].height, layer[sbBlock3].maxheight); ); calc(layer[sbBlock3].realBlockY, layer[sbBlock2].realBlockY + layer[sbBlock2].height + 0); </action>   <style name="sbBlock4ST" parent="sbBlock3" align="bottom" edge="top" minheight="0" maxheight="0" y="-0"  bgcolor="0xffffff" bgalpha="1.00"  /> <layer name="sbBlock4" style="sbBlocks|sbBlock4ST" /> <action name="calcBlock4H"> calc(layer[sbBlock4].height, 80 * stageheight * 0.01); if(layer[sbBlock4].height LT layer[sbBlock4].minheight AND layer[sbBlock4].minheight != 0, copy(layer[sbBlock4].height, layer[sbBlock4].minheight); ); if(layer[sbBlock4].height GT layer[sbBlock4].maxheight AND layer[sbBlock4].maxheight != 0, copy(layer[sbBlock4].height, layer[sbBlock4].maxheight); ); calc(layer[sbBlock4].realBlockY, layer[sbBlock3].realBlockY + layer[sbBlock3].height + 0); </action>                 <style name="sbLogoST" keep="true" url="" align="top" alpha="0" width="100%" height="prop" handcursor="true" accuracy="1" onloaded="sbGetLogoPropValue(get(plugin[sb_logo].height),get(plugin[sb_logo].imageheight),get(plugin[sb_logo].imagewidth),get(plugin[sb_logo].width),sb_logo);" parent="sbBlock1" onclick="sbOnClickLogo()" />                 <style name="sbLogo2ST" keep="true" url="%FIRSTXML%/graphics/alpo.sidebar-v1.0.32/leroy-merlin-baseline.png" align="top" alpha="0" width="100%" height="prop" handcursor="true" accuracy="1" onloaded="sbGetLogoPropValue(get(plugin[sb_logo2].height),get(plugin[sb_logo2].imageheight),get(plugin[sb_logo2].imagewidth),get(plugin[sb_logo2].width),sb_logo2);" parent="sbBlock3" onclick="sbOnClickLogo2()" />                 <style name="current_PanoNameUseST" url="" keep="false" />                  <include url="%FIRSTXML%/graphics/alpo.sidebar-v1.0.32/menutype/hierarchical.xml" /> <style name="scrolLayerST" keep="true" type="container" align="top" parent="sbBlock4" width="243" height="100%"/> <style name="scrollareaST" parent="scrolLayer" keep="true" align="lefttop" width="243" constW="243"/>                                             <sidebar name="settings" sbUseMainMenu="true" /> <sidebar name="settings" sbUseLogo="true"  /> <sidebar name="settings" sbUseLogo2="true"  /> <sidebar name="settings" current_PanoNameUse="false" /> <sidebar name="settings" useButtons="false" /><sidebar name="settings" sbHrMenuAreaNameWidth="245" sbHrMenuItemBgr="ffba42" sbHrMenuItemBgrAlpha="0.00" sbHrMenuItemLeftPadding="10" sbHrMenuItemRightPadding="10" sbHrMenuFont="tahoma" sbHrMenuFontSize="16" sbHrMenuFontColor="66b239" sbHrMenuFontAlign="center"  sbHrMenuFontItalic="font-style&#58;normal&#59;"   sbHrMenuFontBold="font-weight&#58;normal&#59;"   sbHrMenuFontTD="text-decoration&#58;none&#59;"  sbHrMenuAreaHeight="60" sbHrMenuAreaVSpace="0" sbHrMenuAreaXOffset="0"  overAnimColor="true" overColor="000000" overColorAlpha="0.07"  overAnimUse="true"  sbHrMenuItemBorder="true"  sbHrMenuItemBorderSet="0,0,1,0 0xbdbdbd 1.00"  itemBorderContW="245" itemBorderWT="0" itemBorderWB="1" itemBorderContXoff="0" itemBorderContYoff="0" sbHrMenuSideIconUse="true" sbHrMenuSideIconTxtLevel="false" sbThumbsSetPos="top" sbThumbsSetH="100" sbThumbsSetTopPad="15" sbThumbsSetBotPad="30" sbThumbsSetMargin="7"    sbThumbsItemTotalH="168"  margEdge="15"       thumbPad="0"     sbInGroupHeaderArea="55" sbInGroupHeaderAreaH="55" sbInGroupHeaderAreaW="245" sbInGroupHeaderBMargin="0" sbInGroupHeaderAreaAlign="lefttop" sbInGroupHeaderBgr="true" sbInGroupHeaderBgrColor="0x66b239" sbInGroupHeaderBgrAlpha="1.00" sbInGroupHeaderOverBeh="true" sbInGroupHeaderBgrOverColor="0x4f892b" sbInGroupHeaderBgrOverAlpha="1.00" sbInGroupHeaderUseTxt="true" sbInGroupHeaderFont="tahoma" sbInGroupHeaderFontSize="14" sbInGroupHeaderFontColor="eeeeee" sbInGroupHeaderTxtAlign="center" sbInGroupHeaderVcenter="true"  sbInGroupHeaderPaddingT="0" sbInGroupHeaderPaddingB="0"     sbInGroupHeaderIconUrl="%FIRSTXML%/graphics/alpo.sidebar-v1.0.32/graphics/arr_back_left.png" sbInGroupHeaderPaddingR="8" sbInGroupHeaderPaddingL="8"  sbInGroupHeaderFontI="font-style&#58;normal&#59;"   sbInGroupHeaderFontB="font-weight&#58;normal&#59;"   sbInGroupHeaderFontD="text-decoration&#58;none&#59;"   />    <style name="itemThumbST" align="top" />  <style name="sbHrMenuSideFileST" keep="true" enabled="false" edge="center" align="right" accuracy="1"  x="calc:10 + style[sbHrMenuSideFileST].width / 2" width="24" height="24" url="%FIRSTXML%/graphics/alpo.sidebar-v1.0.32/graphics/arr_item_right.png"  />  <style name="inGrHeadIconST" url="%FIRSTXML%/graphics/alpo.sidebar-v1.0.32/graphics/arr_back_left.png" onloaded="setHeaderPadding( get(sidebar[settings].sbInGroupHeaderPaddingL) , get(layer[inGrHeadIcon].width) )" />   
+<!-- ********** -->
+<!-- Bouton du mode VR -->
+<!-- id : webvrbutton -->
+<!-- ********** -->
+
+	<layer name="webvrbutton"
+		keep="true"
+		devices="mobile"
+		blocked="false"
+		url="%FIRSTXML%/graphics/webvrbutton/masque-vr.png" 
+		align="right"
+		x="10"
+		y="0"
+		zorder="8"
+		visible="false"
+		onclick="js(accessWebVr());
+"
+
+
+		width="7%"
+		height="prop"
+		/>
+
+	<events name="webvrbuttonevents"
+		onvrunavailable="hidewebvrbutton(true);"
+		devices="mobile"
+		onTourStart="showwebvrbutton();"
+		keep="true" />
+	<action name="hidewebvrbutton" devices="mobile">if(%1 == true,set(layer[webvrbutton].blocked, true););set(layer[webvrbutton].visible, false);</action>
+	<action name="showwebvrbutton" devices="mobile">if(layer[webvrbutton].blocked == false,set(layer[webvrbutton].visible, true););</action>
+
+
+<!-- ********** -->
+<!-- Lecteur de site Internet -->
+<!-- id : websiteViewer -->
+<!-- ********** -->
+
+<ptplugin name="websiteViewer" engine="kolorBox">
+	<settings>
+		<option name="position" value="center" type="string" />
+		<option name="margin_x" value="0" type="int" />
+		<option name="margin_y" value="0" type="int" />
+		<option name="external_padding" value="7" type="int" />
+		<option name="draggable_box" value="false" type="bool" />
+		<option name="container_auto_size" value="true" type="bool" />
+		<option name="container_width" value="100" type="int" />
+		<option name="container_width_unit" value="percent" type="string" />
+		<option name="container_height" value="100" type="int" />
+		<option name="container_height_unit" value="percent" type="string" />
+		<option name="container_color" value="ffffff" type="string" />
+		<option name="container_alpha" value="1" type="float" />
+		<option name="container_topleft_border_radius" value="3" type="int" />
+		<option name="container_topright_border_radius" value="3" type="int" />
+		<option name="container_bottomleft_border_radius" value="3" type="int" />
+		<option name="container_bottomright_border_radius" value="3" type="int" />
+		<option name="container_border_width" value="1" type="int" />
+		<option name="container_border_color" value="66b239" type="string" />
+		<option name="container_border_alpha" value="1" type="float" />
+		<option name="overlay_displayed" value="true" type="bool" />
+		<option name="overlay_color" value="000000" type="string" />
+		<option name="overlay_alpha" value="0.7000076295109483" type="float" />
+
+		<option name="title_displayed" value="false" type="bool" />
+		<option name="title_position" value="top" type="string" />
+		<option name="title_font" value="Coco Gothic" type="string" />
+		<option name="title_size" value="18" type="int" />
+		<option name="title_weight" value="bold" type="string" />
+		<option name="title_style" value="normal" type="string" />
+		<option name="title_decoration" value="none" type="string" />
+		<option name="title_color" value="66b239" type="string" />
+		<option name="caption_displayed" value="false" type="bool" />
+		<option name="iframe_scrolling" value="auto" type="string" />
+		<option name="iframe_default_width" value="900" type="int" />
+		<option name="iframe_default_height" value="600" type="int" />
+		<option name="iframe_devices_width" value="900" type="int" />
+		<option name="iframe_devices_height" value="600" type="int" />
+		<option name="force_ios_scrolling" value="true" type="bool" />
+		<option name="fullscreen_displayed" value="false" type="bool" />
+		<option name="fullscreen_position" value="topleft" type="string" />
+		<option name="fullscreen_text" value="websiteViewerfullscreen_text" type="string" />
+
+
+
+
+		<option name="close_displayed" value="true" type="bool" />
+		<option name="close_position" value="topright" type="string" />
+		<option name="close_text" value="websiteViewerclose_text" type="string" />
+
+		<option name="close_image" value="vv-leroy-merlindata/graphics/websiteviewer/bouton-fermer1.png" type="string" />
+
+		<option name="close_callback" value="invokeKrFunction('closeKolorBoxCallback_websiteViewer')" type="string" />
+		<option name="zorder" value="9" type="int" />
+		<option name="use_i18n" value="true" type="bool" />
+	</settings>
+	<internaldata>
+		
+	</internaldata>
+</ptplugin>
+
+<action name="kolorBoxJsReady_websiteViewer">
+	set(ptplugin[websiteViewer].jsready, true);
+</action>
+
+<action name="openWebsite_websiteViewer">
+	ifnot(ptplugin[websiteViewer].isOpen,
+		set(ptplugin[websiteViewer].isOpen, true);
+		set(ptplugin[websiteViewer].doNotDeleteMe, false);
+		getmessage(websiteViewer_boxurl, %1);
+		txtadd(websiteViewer_boxurl, ?iframe=true);
+		pauseautorotation(forceplugin);
+
+		js(invokePluginFunction(websiteViewer, loadSingleArrayItem, get(websiteViewer_boxurl), %2));
+		events.dispatch(onremovedisplayedobject);
+	,
+		if('%1' != websiteViewer_boxurl,
+			closeKolorBox_websiteViewer();
+			delayedcall(0.3,openWebsite_websiteViewer(%1,%2););
+		);
+	);
+</action>
+
+<action name="toggleWebsite_websiteViewer">
+	js(invokePluginFunction(websiteViewer, toggleKolorBox, %1));
+</action>
+
+
+<action name="closeKolorBox_websiteViewer">
+	js(invokePluginFunction(websiteViewer, closeKolorBox));
+</action>
+
+<action name="closeKolorBoxCallback_websiteViewer">
+	resumeautorotation(forceplugin);
+
+	set(ptplugin[websiteViewer].isOpen, false);
+</action>
+
+<action name="changeLanguage_websiteViewer">
+	if(ptplugin[websiteViewer].jsready,
+		stopdelayedcall(delay_websiteViewer);
+		js(invokePluginFunction(websiteViewer, changeLanguage));
+	,
+		delayedcall(delay_websiteViewer, 0.1, changeLanguage_websiteViewer(););
+	);
+</action>
+
+<events name="kolorBoxEvents_websiteViewer" 
+	keep="true"
+	changetourlanguage="changeLanguage_websiteViewer();"
+	/>
+  <!-- ********** -->
+  <!-- Multiple Spot - MURS -->
+  <!-- id : multipleSpot4 -->
+  <!-- ********** -->
+
+  <!-- Spot Style -->
+  <style name="Spot"
+         visible="false"
+         onhover="onhoverIconINFO"
+         onover="onoverIconINFO"
+         onout="onoutIconINFO"
+         width="40"
+         height="prop"
+         />
+  <action name="onhoverIconINFO">
+    showtooltip('hotspot');
+  </action>
+  <action name="onoverIconINFO">
+    tween(scale, 1.2);
+  </action>
+  <action name="onoutIconINFO">
+    hideTooltip();
+    tween(scale, 1);
+  </action>
+  <!-- **** **** -->
+
+  <!-- **** Hotspots and onclick action associated **** -->
+  <hotspot name="plusmultipleSpot4"
+           ath="-14" atv="0"
+           style="Spot"
+           url="%FIRSTXML%/graphics/multiplespot4/btn_plus.png"
+           onclick="onclickplusmultipleSpot4"
+           zorder="10"
+           visible="false"
+           keep="true"
+           tooltip="multipleSpot4tooltipUrl"
+           />
+  <action name="onclickplusmultipleSpot4">
+    if(hotspot[bouton4multipleSpot4].visible == true,
+      hidepointsmultipleSpot4(),
+      showpointsmultipleSpot4()
+    );
+  </action>
+  <hotspot name="bouton1multipleSpot4"
+           ath="-14" atv="0"
+           alpha="1"
+           style="Spot"
+           url="%FIRSTXML%/graphics/multiplespot4/btn_mur_grisbeton.png"
+           onclick="onclickbouton1multipleSpot4"
+           zorder="1"
+           keep="true"
+           tooltip="multipleSpot4tooltip1Url"
+           />
+  <action name="onclickbouton1multipleSpot4">
+    hidepointsmultipleSpot4();
+    set(selectedmultipleSpot4, "bouton1multipleSpot4");
+          mainloadscene(pano39512);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+
+
+  </action>
+  <hotspot name="bouton2multipleSpot4"
+           ath="-14" atv="0"
+           alpha="1"
+           style="Spot"
+           url="%FIRSTXML%/graphics/multiplespot4/btn_mur_rougetokyo.png"
+           onclick="onclickbouton2multipleSpot4"
+           zorder="1"
+           keep="true"
+           tooltip="multipleSpot4tooltip2Url"
+           />
+  <action name="onclickbouton2multipleSpot4">
+    hidepointsmultipleSpot4();
+    set(selectedmultipleSpot4, "bouton2multipleSpot4");
+          mainloadscene(pano39514);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+
+
+  </action>
+  <hotspot name="bouton3multipleSpot4"
+           ath="-14" atv="0"
+           alpha="1"
+           style="Spot"
+           url="%FIRSTXML%/graphics/multiplespot4/btn_mur_ornoir.png"
+           onclick="onclickbouton3multipleSpot4"
+           zorder="1"
+           keep="true"
+           tooltip="multipleSpot4tooltip3Url"
+           />
+  <action name="onclickbouton3multipleSpot4">
+    hidepointsmultipleSpot4();
+    set(selectedmultipleSpot4, "bouton3multipleSpot4");
+          mainloadscene(pano39533);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+
+
+  </action>
+  <hotspot name="bouton4multipleSpot4"
+           ath="-14" atv="0"
+           alpha="1"
+           style="Spot"
+           url="%FIRSTXML%/graphics/multiplespot4/btn_mur_blanc.png"
+           onclick="onclickbouton4multipleSpot4"
+           zorder="1"
+           keep="true"
+           tooltip="multipleSpot4tooltip4Url"
+           />
+  <action name="onclickbouton4multipleSpot4">
+    hidepointsmultipleSpot4();
+    set(selectedmultipleSpot4, "bouton4multipleSpot4");
+          mainloadscene(pano49);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+
+
+  </action>
+
+
+
+  <!-- **** Animations **** -->
+  <action name="animationshowfor4multipleSpot4">
+    if(selectedmultipleSpot4 == "bouton1multipleSpot4", 
+      triple_leftmultipleSpot4("bouton2multipleSpot4");
+      triple_middlemultipleSpot4("bouton3multipleSpot4");
+      triple_rightmultipleSpot4("bouton4multipleSpot4");
+    );
+    if(selectedmultipleSpot4 == "bouton2multipleSpot4", 
+      triple_leftmultipleSpot4("bouton1multipleSpot4");
+      triple_middlemultipleSpot4("bouton3multipleSpot4");
+      triple_rightmultipleSpot4("bouton4multipleSpot4");
+    );
+    if(selectedmultipleSpot4 == "bouton3multipleSpot4", 
+      triple_leftmultipleSpot4("bouton1multipleSpot4");
+      triple_middlemultipleSpot4("bouton2multipleSpot4");
+      triple_rightmultipleSpot4("bouton4multipleSpot4");
+    );
+    if(selectedmultipleSpot4 == "bouton4multipleSpot4", 
+      triple_leftmultipleSpot4("bouton1multipleSpot4");
+      triple_middlemultipleSpot4("bouton2multipleSpot4");
+      triple_rightmultipleSpot4("bouton3multipleSpot4");
+    );
+    if(selectedmultipleSpot4 == "none",
+      quadra_leftmultipleSpot4("bouton1multipleSpot4");
+      quadra_left_midmultipleSpot4("bouton2multipleSpot4");
+      quadra_right_midmultipleSpot4("bouton3multipleSpot4");
+      quadra_rightmultipleSpot4("bouton4multipleSpot4");
+    );  
+  </action>
+  <action name="animationhideformultipleSpot4">
+    tween(hotspot[%1].ath, -14, 0.1);
+    tween(hotspot[%1].atv, 0, 0.1);
+    tween(hotspot[%1].alpha, 0, 0.5);
+  </action>
+
+
+
+  <!-- **** Deplacement animations **** -->
+  <action name ="quadra_leftmultipleSpot4">
+    tween(hotspot[%1].ath, calc(-14-4), 0.1);
+    tween(hotspot[%1].atv, calc(0-3), 0.1);
+    tween(hotspot[%1].alpha, 1, 0.5);
+  </action>
+  <action name ="quadra_left_midmultipleSpot4">
+    tween(hotspot[%1].ath, calc(-14-2), 0.1);
+    tween(hotspot[%1].atv, calc(0-6), 0.1);
+    tween(hotspot[%1].alpha, 1, 0.5);
+  </action>
+  <action name ="quadra_right_midmultipleSpot4">
+    tween(hotspot[%1].ath, calc(-14+2), 0.1);
+    tween(hotspot[%1].atv, calc(0-6), 0.1);
+    tween(hotspot[%1].alpha, 1, 0.5);
+  </action>
+  <action name ="quadra_rightmultipleSpot4">
+    tween(hotspot[%1].ath, calc(-14+4), 0.1);
+    tween(hotspot[%1].atv, calc(0-3), 0.1);
+    tween(hotspot[%1].alpha, 1, 0.5);
+  </action>
+  <action name="triple_leftmultipleSpot4">
+    tween(hotspot[%1].ath, calc(-14-4), 0.1);
+    tween(hotspot[%1].atv, calc(0-3), 0.1);
+    tween(hotspot[%1].alpha, 1, 0.5);
+  </action>
+  <action name="triple_middlemultipleSpot4">
+    tween(hotspot[%1].ath, -14, 0.1);
+    tween(hotspot[%1].atv, calc(0-6), 0.1);
+    tween(hotspot[%1].alpha, 1, 0.5);
+  </action>
+  <action name="triple_rightmultipleSpot4">
+    tween(hotspot[%1].ath, calc(-14+4), 0.1);
+    tween(hotspot[%1].atv, calc(0-3), 0.1);
+    tween(hotspot[%1].alpha, 1, 0.5);
+  </action>
+
+
+
+  <!-- **** Show & Hide functions **** -->
+  <action name="showpointsmultipleSpot4">
+        if (xml.scene == pano49,
+          animationshowfor4multipleSpot4();
+          set(hotspot[bouton1multipleSpot4].visible, true);
+          set(hotspot[bouton2multipleSpot4].visible, true);
+          set(hotspot[bouton3multipleSpot4].visible, true);
+          set(hotspot[bouton4multipleSpot4].visible, true);
+        );
+        if (xml.scene == pano39533,
+          animationshowfor4multipleSpot4();
+          set(hotspot[bouton1multipleSpot4].visible, true);
+          set(hotspot[bouton2multipleSpot4].visible, true);
+          set(hotspot[bouton3multipleSpot4].visible, true);
+          set(hotspot[bouton4multipleSpot4].visible, true);
+        );
+        if (xml.scene == pano39514,
+          animationshowfor4multipleSpot4();
+          set(hotspot[bouton1multipleSpot4].visible, true);
+          set(hotspot[bouton2multipleSpot4].visible, true);
+          set(hotspot[bouton3multipleSpot4].visible, true);
+          set(hotspot[bouton4multipleSpot4].visible, true);
+        );
+        if (xml.scene == pano39512,
+          animationshowfor4multipleSpot4();
+          set(hotspot[bouton1multipleSpot4].visible, true);
+          set(hotspot[bouton2multipleSpot4].visible, true);
+          set(hotspot[bouton3multipleSpot4].visible, true);
+          set(hotspot[bouton4multipleSpot4].visible, true);
+        );
+        if (xml.scene == pano39518,
+          animationshowfor4multipleSpot4();
+          set(hotspot[bouton1multipleSpot4].visible, true);
+          set(hotspot[bouton2multipleSpot4].visible, true);
+          set(hotspot[bouton3multipleSpot4].visible, true);
+          set(hotspot[bouton4multipleSpot4].visible, true);
+        );
+        if (xml.scene == pano39517,
+          animationshowfor4multipleSpot4();
+          set(hotspot[bouton1multipleSpot4].visible, true);
+          set(hotspot[bouton2multipleSpot4].visible, true);
+          set(hotspot[bouton3multipleSpot4].visible, true);
+          set(hotspot[bouton4multipleSpot4].visible, true);
+        );
+        if (xml.scene == pano39515,
+          animationshowfor4multipleSpot4();
+          set(hotspot[bouton1multipleSpot4].visible, true);
+          set(hotspot[bouton2multipleSpot4].visible, true);
+          set(hotspot[bouton3multipleSpot4].visible, true);
+          set(hotspot[bouton4multipleSpot4].visible, true);
+        );
+        if (xml.scene == pano39516,
+          animationshowfor4multipleSpot4();
+          set(hotspot[bouton1multipleSpot4].visible, true);
+          set(hotspot[bouton2multipleSpot4].visible, true);
+          set(hotspot[bouton3multipleSpot4].visible, true);
+          set(hotspot[bouton4multipleSpot4].visible, true);
+        );
+        if (xml.scene == pano39519,
+          animationshowfor4multipleSpot4();
+          set(hotspot[bouton1multipleSpot4].visible, true);
+          set(hotspot[bouton2multipleSpot4].visible, true);
+          set(hotspot[bouton3multipleSpot4].visible, true);
+          set(hotspot[bouton4multipleSpot4].visible, true);
+        );
+        if (xml.scene == pano39520,
+          animationshowfor4multipleSpot4();
+          set(hotspot[bouton1multipleSpot4].visible, true);
+          set(hotspot[bouton2multipleSpot4].visible, true);
+          set(hotspot[bouton3multipleSpot4].visible, true);
+          set(hotspot[bouton4multipleSpot4].visible, true);
+        );
+        if (xml.scene == pano39521,
+          animationshowfor4multipleSpot4();
+          set(hotspot[bouton1multipleSpot4].visible, true);
+          set(hotspot[bouton2multipleSpot4].visible, true);
+          set(hotspot[bouton3multipleSpot4].visible, true);
+          set(hotspot[bouton4multipleSpot4].visible, true);
+        );
+  </action>
+  <action name="hidepointsmultipleSpot4">
+    animationhideformultipleSpot4("bouton1multipleSpot4");
+    animationhideformultipleSpot4("bouton2multipleSpot4");
+    animationhideformultipleSpot4("bouton3multipleSpot4");
+    animationhideformultipleSpot4("bouton4multipleSpot4");
+
+    delayedcall(0.1,
+      set(hotspot[bouton1multipleSpot4].visible, false);
+      set(hotspot[bouton2multipleSpot4].visible, false);
+      set(hotspot[bouton3multipleSpot4].visible, false);
+      set(hotspot[bouton4multipleSpot4].visible, false);
+    );
+  </action>
+  
+
+
+  <!-- **** Events functions **** -->
+  <action name="showPanoPointSpotsmultipleSpot4">
+    if(selectedmultipleSpot4 != "bouton1multipleSpot4" AND selectedmultipleSpot4 != "bouton2multipleSpot4" AND selectedmultipleSpot4 != "bouton3multipleSpot4" AND selectedmultipleSpot4 != "bouton4multipleSpot4",
+      def(selectedmultipleSpot4, string, "none");
+    );
+  </action>
+  <action name="showPanoPlusSpotmultipleSpot4">
+    def(displayedmultipleSpot4, bool, false);
+        if ((xml.scene == pano49) OR (displayedmultipleSpot4),
+          set(hotspot[plusmultipleSpot4].visible, true);
+          def(displayedmultipleSpot4, bool, true);,
+          set(hotspot[plusmultipleSpot4].visible, false);
+        );
+        if ((xml.scene == pano39533) OR (displayedmultipleSpot4),
+          set(hotspot[plusmultipleSpot4].visible, true);
+          def(displayedmultipleSpot4, bool, true);,
+          set(hotspot[plusmultipleSpot4].visible, false);
+        );
+        if ((xml.scene == pano39514) OR (displayedmultipleSpot4),
+          set(hotspot[plusmultipleSpot4].visible, true);
+          def(displayedmultipleSpot4, bool, true);,
+          set(hotspot[plusmultipleSpot4].visible, false);
+        );
+        if ((xml.scene == pano39512) OR (displayedmultipleSpot4),
+          set(hotspot[plusmultipleSpot4].visible, true);
+          def(displayedmultipleSpot4, bool, true);,
+          set(hotspot[plusmultipleSpot4].visible, false);
+        );
+        if ((xml.scene == pano39518) OR (displayedmultipleSpot4),
+          set(hotspot[plusmultipleSpot4].visible, true);
+          def(displayedmultipleSpot4, bool, true);,
+          set(hotspot[plusmultipleSpot4].visible, false);
+        );
+        if ((xml.scene == pano39517) OR (displayedmultipleSpot4),
+          set(hotspot[plusmultipleSpot4].visible, true);
+          def(displayedmultipleSpot4, bool, true);,
+          set(hotspot[plusmultipleSpot4].visible, false);
+        );
+        if ((xml.scene == pano39515) OR (displayedmultipleSpot4),
+          set(hotspot[plusmultipleSpot4].visible, true);
+          def(displayedmultipleSpot4, bool, true);,
+          set(hotspot[plusmultipleSpot4].visible, false);
+        );
+        if ((xml.scene == pano39516) OR (displayedmultipleSpot4),
+          set(hotspot[plusmultipleSpot4].visible, true);
+          def(displayedmultipleSpot4, bool, true);,
+          set(hotspot[plusmultipleSpot4].visible, false);
+        );
+        if ((xml.scene == pano39519) OR (displayedmultipleSpot4),
+          set(hotspot[plusmultipleSpot4].visible, true);
+          def(displayedmultipleSpot4, bool, true);,
+          set(hotspot[plusmultipleSpot4].visible, false);
+        );
+        if ((xml.scene == pano39520) OR (displayedmultipleSpot4),
+          set(hotspot[plusmultipleSpot4].visible, true);
+          def(displayedmultipleSpot4, bool, true);,
+          set(hotspot[plusmultipleSpot4].visible, false);
+        );
+        if ((xml.scene == pano39521) OR (displayedmultipleSpot4),
+          set(hotspot[plusmultipleSpot4].visible, true);
+          def(displayedmultipleSpot4, bool, true);,
+          set(hotspot[plusmultipleSpot4].visible, false);
+        );
+  </action>
+
+  <!-- **** Events trigger **** -->
+  <events name="multipleSpot4showevents" onTourStart="showPanoPointSpotsmultipleSpot4" onPanoStart="showPanoPlusSpotmultipleSpot4" keep="true"/>
+  <!-- ********** -->
+  <!-- Multiple Spot - SOLS -->
+  <!-- id : multipleSpot41 -->
+  <!-- ********** -->
+
+  <!-- Spot Style -->
+  <style name="Spot"
+         visible="false"
+         onhover="onhoverIconINFO"
+         onover="onoverIconINFO"
+         onout="onoutIconINFO"
+         width="40"
+         height="prop"
+         />
+  <action name="onhoverIconINFO">
+    showtooltip('hotspot');
+  </action>
+  <action name="onoverIconINFO">
+    tween(scale, 1.2);
+  </action>
+  <action name="onoutIconINFO">
+    hideTooltip();
+    tween(scale, 1);
+  </action>
+  <!-- **** **** -->
+
+  <!-- **** Hotspots and onclick action associated **** -->
+  <hotspot name="plusmultipleSpot41"
+           ath="-4" atv="25"
+           style="Spot"
+           url="%FIRSTXML%/graphics/multiplespot41/btn_plus.png"
+           onclick="onclickplusmultipleSpot41"
+           zorder="10"
+           visible="false"
+           keep="true"
+           tooltip="multipleSpot41tooltipUrl"
+           />
+  <action name="onclickplusmultipleSpot41">
+    if(hotspot[bouton4multipleSpot41].visible == true,
+      hidepointsmultipleSpot41(),
+      showpointsmultipleSpot41()
+    );
+  </action>
+  <hotspot name="bouton1multipleSpot41"
+           ath="-4" atv="25"
+           alpha="1"
+           style="Spot"
+           url="%FIRSTXML%/graphics/multiplespot41/btn_sol_blanc.png"
+           onclick="onclickbouton1multipleSpot41"
+           zorder="1"
+           keep="true"
+           tooltip="multipleSpot41tooltip1Url"
+           />
+  <action name="onclickbouton1multipleSpot41">
+    hidepointsmultipleSpot41();
+    set(selectedmultipleSpot41, "bouton1multipleSpot41");
+          mainloadscene(pano39519);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+
+
+  </action>
+  <hotspot name="bouton2multipleSpot41"
+           ath="-4" atv="25"
+           alpha="1"
+           style="Spot"
+           url="%FIRSTXML%/graphics/multiplespot41/btn_sol_anthracite.png"
+           onclick="onclickbouton2multipleSpot41"
+           zorder="1"
+           keep="true"
+           tooltip="multipleSpot41tooltip2Url"
+           />
+  <action name="onclickbouton2multipleSpot41">
+    hidepointsmultipleSpot41();
+    set(selectedmultipleSpot41, "bouton2multipleSpot41");
+          mainloadscene(pano39520);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+
+
+  </action>
+  <hotspot name="bouton3multipleSpot41"
+           ath="-4" atv="25"
+           alpha="1"
+           style="Spot"
+           url="%FIRSTXML%/graphics/multiplespot41/btn_sol_cheneclair.png"
+           onclick="onclickbouton3multipleSpot41"
+           zorder="1"
+           keep="true"
+           tooltip="multipleSpot41tooltip3Url"
+           />
+  <action name="onclickbouton3multipleSpot41">
+    hidepointsmultipleSpot41();
+    set(selectedmultipleSpot41, "bouton3multipleSpot41");
+          mainloadscene(pano39521);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+
+
+  </action>
+  <hotspot name="bouton4multipleSpot41"
+           ath="-4" atv="25"
+           alpha="1"
+           style="Spot"
+           url="%FIRSTXML%/graphics/multiplespot41/btn_sol_gris.png"
+           onclick="onclickbouton4multipleSpot41"
+           zorder="1"
+           keep="true"
+           tooltip="multipleSpot41tooltip4Url"
+           />
+  <action name="onclickbouton4multipleSpot41">
+    hidepointsmultipleSpot41();
+    set(selectedmultipleSpot41, "bouton4multipleSpot41");
+          mainloadscene(pano49);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+
+
+  </action>
+
+
+
+  <!-- **** Animations **** -->
+  <action name="animationshowfor4multipleSpot41">
+    if(selectedmultipleSpot41 == "bouton1multipleSpot41", 
+      triple_leftmultipleSpot41("bouton2multipleSpot41");
+      triple_middlemultipleSpot41("bouton3multipleSpot41");
+      triple_rightmultipleSpot41("bouton4multipleSpot41");
+    );
+    if(selectedmultipleSpot41 == "bouton2multipleSpot41", 
+      triple_leftmultipleSpot41("bouton1multipleSpot41");
+      triple_middlemultipleSpot41("bouton3multipleSpot41");
+      triple_rightmultipleSpot41("bouton4multipleSpot41");
+    );
+    if(selectedmultipleSpot41 == "bouton3multipleSpot41", 
+      triple_leftmultipleSpot41("bouton1multipleSpot41");
+      triple_middlemultipleSpot41("bouton2multipleSpot41");
+      triple_rightmultipleSpot41("bouton4multipleSpot41");
+    );
+    if(selectedmultipleSpot41 == "bouton4multipleSpot41", 
+      triple_leftmultipleSpot41("bouton1multipleSpot41");
+      triple_middlemultipleSpot41("bouton2multipleSpot41");
+      triple_rightmultipleSpot41("bouton3multipleSpot41");
+    );
+    if(selectedmultipleSpot41 == "none",
+      quadra_leftmultipleSpot41("bouton1multipleSpot41");
+      quadra_left_midmultipleSpot41("bouton2multipleSpot41");
+      quadra_right_midmultipleSpot41("bouton3multipleSpot41");
+      quadra_rightmultipleSpot41("bouton4multipleSpot41");
+    );  
+  </action>
+  <action name="animationhideformultipleSpot41">
+    tween(hotspot[%1].ath, -4, 0.1);
+    tween(hotspot[%1].atv, 25, 0.1);
+    tween(hotspot[%1].alpha, 0, 0.5);
+  </action>
+
+
+
+  <!-- **** Deplacement animations **** -->
+  <action name ="quadra_leftmultipleSpot41">
+    tween(hotspot[%1].ath, calc(-4-4), 0.1);
+    tween(hotspot[%1].atv, calc(25-3), 0.1);
+    tween(hotspot[%1].alpha, 1, 0.5);
+  </action>
+  <action name ="quadra_left_midmultipleSpot41">
+    tween(hotspot[%1].ath, calc(-4-2), 0.1);
+    tween(hotspot[%1].atv, calc(25-6), 0.1);
+    tween(hotspot[%1].alpha, 1, 0.5);
+  </action>
+  <action name ="quadra_right_midmultipleSpot41">
+    tween(hotspot[%1].ath, calc(-4+2), 0.1);
+    tween(hotspot[%1].atv, calc(25-6), 0.1);
+    tween(hotspot[%1].alpha, 1, 0.5);
+  </action>
+  <action name ="quadra_rightmultipleSpot41">
+    tween(hotspot[%1].ath, calc(-4+4), 0.1);
+    tween(hotspot[%1].atv, calc(25-3), 0.1);
+    tween(hotspot[%1].alpha, 1, 0.5);
+  </action>
+  <action name="triple_leftmultipleSpot41">
+    tween(hotspot[%1].ath, calc(-4-4), 0.1);
+    tween(hotspot[%1].atv, calc(25-3), 0.1);
+    tween(hotspot[%1].alpha, 1, 0.5);
+  </action>
+  <action name="triple_middlemultipleSpot41">
+    tween(hotspot[%1].ath, -4, 0.1);
+    tween(hotspot[%1].atv, calc(25-6), 0.1);
+    tween(hotspot[%1].alpha, 1, 0.5);
+  </action>
+  <action name="triple_rightmultipleSpot41">
+    tween(hotspot[%1].ath, calc(-4+4), 0.1);
+    tween(hotspot[%1].atv, calc(25-3), 0.1);
+    tween(hotspot[%1].alpha, 1, 0.5);
+  </action>
+
+
+
+  <!-- **** Show & Hide functions **** -->
+  <action name="showpointsmultipleSpot41">
+        if (xml.scene == pano49,
+          animationshowfor4multipleSpot41();
+          set(hotspot[bouton1multipleSpot41].visible, true);
+          set(hotspot[bouton2multipleSpot41].visible, true);
+          set(hotspot[bouton3multipleSpot41].visible, true);
+          set(hotspot[bouton4multipleSpot41].visible, true);
+        );
+        if (xml.scene == pano39533,
+          animationshowfor4multipleSpot41();
+          set(hotspot[bouton1multipleSpot41].visible, true);
+          set(hotspot[bouton2multipleSpot41].visible, true);
+          set(hotspot[bouton3multipleSpot41].visible, true);
+          set(hotspot[bouton4multipleSpot41].visible, true);
+        );
+        if (xml.scene == pano39514,
+          animationshowfor4multipleSpot41();
+          set(hotspot[bouton1multipleSpot41].visible, true);
+          set(hotspot[bouton2multipleSpot41].visible, true);
+          set(hotspot[bouton3multipleSpot41].visible, true);
+          set(hotspot[bouton4multipleSpot41].visible, true);
+        );
+        if (xml.scene == pano39512,
+          animationshowfor4multipleSpot41();
+          set(hotspot[bouton1multipleSpot41].visible, true);
+          set(hotspot[bouton2multipleSpot41].visible, true);
+          set(hotspot[bouton3multipleSpot41].visible, true);
+          set(hotspot[bouton4multipleSpot41].visible, true);
+        );
+        if (xml.scene == pano39518,
+          animationshowfor4multipleSpot41();
+          set(hotspot[bouton1multipleSpot41].visible, true);
+          set(hotspot[bouton2multipleSpot41].visible, true);
+          set(hotspot[bouton3multipleSpot41].visible, true);
+          set(hotspot[bouton4multipleSpot41].visible, true);
+        );
+        if (xml.scene == pano39517,
+          animationshowfor4multipleSpot41();
+          set(hotspot[bouton1multipleSpot41].visible, true);
+          set(hotspot[bouton2multipleSpot41].visible, true);
+          set(hotspot[bouton3multipleSpot41].visible, true);
+          set(hotspot[bouton4multipleSpot41].visible, true);
+        );
+        if (xml.scene == pano39515,
+          animationshowfor4multipleSpot41();
+          set(hotspot[bouton1multipleSpot41].visible, true);
+          set(hotspot[bouton2multipleSpot41].visible, true);
+          set(hotspot[bouton3multipleSpot41].visible, true);
+          set(hotspot[bouton4multipleSpot41].visible, true);
+        );
+        if (xml.scene == pano39516,
+          animationshowfor4multipleSpot41();
+          set(hotspot[bouton1multipleSpot41].visible, true);
+          set(hotspot[bouton2multipleSpot41].visible, true);
+          set(hotspot[bouton3multipleSpot41].visible, true);
+          set(hotspot[bouton4multipleSpot41].visible, true);
+        );
+        if (xml.scene == pano39519,
+          animationshowfor4multipleSpot41();
+          set(hotspot[bouton1multipleSpot41].visible, true);
+          set(hotspot[bouton2multipleSpot41].visible, true);
+          set(hotspot[bouton3multipleSpot41].visible, true);
+          set(hotspot[bouton4multipleSpot41].visible, true);
+        );
+        if (xml.scene == pano39520,
+          animationshowfor4multipleSpot41();
+          set(hotspot[bouton1multipleSpot41].visible, true);
+          set(hotspot[bouton2multipleSpot41].visible, true);
+          set(hotspot[bouton3multipleSpot41].visible, true);
+          set(hotspot[bouton4multipleSpot41].visible, true);
+        );
+        if (xml.scene == pano39521,
+          animationshowfor4multipleSpot41();
+          set(hotspot[bouton1multipleSpot41].visible, true);
+          set(hotspot[bouton2multipleSpot41].visible, true);
+          set(hotspot[bouton3multipleSpot41].visible, true);
+          set(hotspot[bouton4multipleSpot41].visible, true);
+        );
+  </action>
+  <action name="hidepointsmultipleSpot41">
+    animationhideformultipleSpot41("bouton1multipleSpot41");
+    animationhideformultipleSpot41("bouton2multipleSpot41");
+    animationhideformultipleSpot41("bouton3multipleSpot41");
+    animationhideformultipleSpot41("bouton4multipleSpot41");
+
+    delayedcall(0.1,
+      set(hotspot[bouton1multipleSpot41].visible, false);
+      set(hotspot[bouton2multipleSpot41].visible, false);
+      set(hotspot[bouton3multipleSpot41].visible, false);
+      set(hotspot[bouton4multipleSpot41].visible, false);
+    );
+  </action>
+  
+
+
+  <!-- **** Events functions **** -->
+  <action name="showPanoPointSpotsmultipleSpot41">
+    if(selectedmultipleSpot41 != "bouton1multipleSpot41" AND selectedmultipleSpot41 != "bouton2multipleSpot41" AND selectedmultipleSpot41 != "bouton3multipleSpot41" AND selectedmultipleSpot41 != "bouton4multipleSpot41",
+      def(selectedmultipleSpot41, string, "none");
+    );
+  </action>
+  <action name="showPanoPlusSpotmultipleSpot41">
+    def(displayedmultipleSpot41, bool, false);
+        if ((xml.scene == pano49) OR (displayedmultipleSpot41),
+          set(hotspot[plusmultipleSpot41].visible, true);
+          def(displayedmultipleSpot41, bool, true);,
+          set(hotspot[plusmultipleSpot41].visible, false);
+        );
+        if ((xml.scene == pano39533) OR (displayedmultipleSpot41),
+          set(hotspot[plusmultipleSpot41].visible, true);
+          def(displayedmultipleSpot41, bool, true);,
+          set(hotspot[plusmultipleSpot41].visible, false);
+        );
+        if ((xml.scene == pano39514) OR (displayedmultipleSpot41),
+          set(hotspot[plusmultipleSpot41].visible, true);
+          def(displayedmultipleSpot41, bool, true);,
+          set(hotspot[plusmultipleSpot41].visible, false);
+        );
+        if ((xml.scene == pano39512) OR (displayedmultipleSpot41),
+          set(hotspot[plusmultipleSpot41].visible, true);
+          def(displayedmultipleSpot41, bool, true);,
+          set(hotspot[plusmultipleSpot41].visible, false);
+        );
+        if ((xml.scene == pano39518) OR (displayedmultipleSpot41),
+          set(hotspot[plusmultipleSpot41].visible, true);
+          def(displayedmultipleSpot41, bool, true);,
+          set(hotspot[plusmultipleSpot41].visible, false);
+        );
+        if ((xml.scene == pano39517) OR (displayedmultipleSpot41),
+          set(hotspot[plusmultipleSpot41].visible, true);
+          def(displayedmultipleSpot41, bool, true);,
+          set(hotspot[plusmultipleSpot41].visible, false);
+        );
+        if ((xml.scene == pano39515) OR (displayedmultipleSpot41),
+          set(hotspot[plusmultipleSpot41].visible, true);
+          def(displayedmultipleSpot41, bool, true);,
+          set(hotspot[plusmultipleSpot41].visible, false);
+        );
+        if ((xml.scene == pano39516) OR (displayedmultipleSpot41),
+          set(hotspot[plusmultipleSpot41].visible, true);
+          def(displayedmultipleSpot41, bool, true);,
+          set(hotspot[plusmultipleSpot41].visible, false);
+        );
+        if ((xml.scene == pano39519) OR (displayedmultipleSpot41),
+          set(hotspot[plusmultipleSpot41].visible, true);
+          def(displayedmultipleSpot41, bool, true);,
+          set(hotspot[plusmultipleSpot41].visible, false);
+        );
+        if ((xml.scene == pano39520) OR (displayedmultipleSpot41),
+          set(hotspot[plusmultipleSpot41].visible, true);
+          def(displayedmultipleSpot41, bool, true);,
+          set(hotspot[plusmultipleSpot41].visible, false);
+        );
+        if ((xml.scene == pano39521) OR (displayedmultipleSpot41),
+          set(hotspot[plusmultipleSpot41].visible, true);
+          def(displayedmultipleSpot41, bool, true);,
+          set(hotspot[plusmultipleSpot41].visible, false);
+        );
+  </action>
+
+  <!-- **** Events trigger **** -->
+  <events name="multipleSpot41showevents" onTourStart="showPanoPointSpotsmultipleSpot41" onPanoStart="showPanoPlusSpotmultipleSpot41" keep="true"/>
+  <!-- ********** -->
+  <!-- Multiple Spot - PLAN TRAVAIL -->
+  <!-- id : multipleSpot5 -->
+  <!-- ********** -->
+
+  <!-- Spot Style -->
+  <style name="Spot"
+         visible="false"
+         onhover="onhoverIconINFO"
+         onover="onoverIconINFO"
+         onout="onoutIconINFO"
+         width="40"
+         height="prop"
+         />
+  <action name="onhoverIconINFO">
+    showtooltip('hotspot');
+  </action>
+  <action name="onoverIconINFO">
+    tween(scale, 1.2);
+  </action>
+  <action name="onoutIconINFO">
+    hideTooltip();
+    tween(scale, 1);
+  </action>
+  <!-- **** **** -->
+
+  <!-- **** Hotspots and onclick action associated **** -->
+  <hotspot name="plusmultipleSpot5"
+           ath="-55" atv="20"
+           style="Spot"
+           url="%FIRSTXML%/graphics/multiplespot5/btn_plus.png"
+           onclick="onclickplusmultipleSpot5"
+           zorder="10"
+           visible="false"
+           keep="true"
+           tooltip="multipleSpot5tooltipUrl"
+           />
+  <action name="onclickplusmultipleSpot5">
+    if(hotspot[bouton5multipleSpot5].visible == true,
+      hidepointsmultipleSpot5(),
+      showpointsmultipleSpot5()
+    );
+  </action>
+  <hotspot name="bouton1multipleSpot5"
+           ath="-55" atv="20"
+           alpha="1"
+           style="Spot"
+           url="%FIRSTXML%/graphics/multiplespot5/btn_pdt_chenecendre.png"
+           onclick="onclickbouton1multipleSpot5"
+           zorder="1"
+           keep="true"
+           tooltip="multipleSpot5tooltip1Url"
+           />
+  <action name="onclickbouton1multipleSpot5">
+    hidepointsmultipleSpot5();
+    set(selectedmultipleSpot5, "bouton1multipleSpot5");
+          mainloadscene(pano39518);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+
+
+  </action>
+  <hotspot name="bouton2multipleSpot5"
+           ath="-55" atv="20"
+           alpha="1"
+           style="Spot"
+           url="%FIRSTXML%/graphics/multiplespot5/btn_pdt_blancmarbre.png"
+           onclick="onclickbouton2multipleSpot5"
+           zorder="1"
+           keep="true"
+           tooltip="multipleSpot5tooltip2Url"
+           />
+  <action name="onclickbouton2multipleSpot5">
+    hidepointsmultipleSpot5();
+    set(selectedmultipleSpot5, "bouton2multipleSpot5");
+          mainloadscene(pano39517);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+
+
+  </action>
+  <hotspot name="bouton3multipleSpot5"
+           ath="-55" atv="20"
+           alpha="1"
+           style="Spot"
+           url="%FIRSTXML%/graphics/multiplespot5/btn_pdt_anthracite.png"
+           onclick="onclickbouton3multipleSpot5"
+           zorder="1"
+           keep="true"
+           tooltip="multipleSpot5tooltip3Url"
+           />
+  <action name="onclickbouton3multipleSpot5">
+    hidepointsmultipleSpot5();
+    set(selectedmultipleSpot5, "bouton3multipleSpot5");
+          mainloadscene(pano39515);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+
+
+  </action>
+  <hotspot name="bouton4multipleSpot5"
+           ath="-55" atv="20"
+           alpha="1"
+           style="Spot"
+           url="%FIRSTXML%/graphics/multiplespot5/btn_pdt_beton.png"
+           onclick="onclickbouton4multipleSpot5"
+           zorder="1"
+           keep="true"
+           tooltip="multipleSpot5tooltip4Url"
+           />
+  <action name="onclickbouton4multipleSpot5">
+    hidepointsmultipleSpot5();
+    set(selectedmultipleSpot5, "bouton4multipleSpot5");
+          mainloadscene(pano39516);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+
+
+  </action>
+  <hotspot name="bouton5multipleSpot5"
+           ath="-55" atv="20"
+           alpha="1"
+           style="Spot"
+           url="%FIRSTXML%/graphics/multiplespot5/btn_pdt_stratifie.png"
+           onclick="onclickbouton5multipleSpot5"
+           zorder="1"
+           keep="true"
+           tooltip="multipleSpot5tooltip5Url"
+           />
+  <action name="onclickbouton5multipleSpot5">
+    hidepointsmultipleSpot5();
+    set(selectedmultipleSpot5, "bouton5multipleSpot5");
+          mainloadscene(pano49);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+
+
+  </action>
+
+
+
+  <!-- **** Animations **** -->
+  <action name="animationshowfor5multipleSpot5">
+    if(selectedmultipleSpot5 == "bouton1multipleSpot5",
+      quadra_leftmultipleSpot5("bouton2multipleSpot5");
+      quadra_left_midmultipleSpot5("bouton3multipleSpot5");
+      quadra_right_midmultipleSpot5("bouton4multipleSpot5");
+      quadra_rightmultipleSpot5("bouton5multipleSpot5");
+    );
+    if(selectedmultipleSpot5 == "bouton2multipleSpot5",
+      quadra_leftmultipleSpot5("bouton1multipleSpot5");
+      quadra_left_midmultipleSpot5("bouton3multipleSpot5");
+      quadra_right_midmultipleSpot5("bouton4multipleSpot5");
+      quadra_rightmultipleSpot5("bouton5multipleSpot5");
+    );
+    if(selectedmultipleSpot5 == "bouton3multipleSpot5",
+      quadra_leftmultipleSpot5("bouton1multipleSpot5");
+      quadra_left_midmultipleSpot5("bouton2multipleSpot5");
+      quadra_right_midmultipleSpot5("bouton4multipleSpot5");
+      quadra_rightmultipleSpot5("bouton5multipleSpot5");
+    );
+    if(selectedmultipleSpot5 == "bouton4multipleSpot5",
+      quadra_leftmultipleSpot5("bouton1multipleSpot5");
+      quadra_left_midmultipleSpot5("bouton2multipleSpot5");
+      quadra_right_midmultipleSpot5("bouton3multipleSpot5");
+      quadra_rightmultipleSpot5("bouton5multipleSpot5");
+    );
+    if(selectedmultipleSpot5 == "bouton5multipleSpot5",
+      quadra_leftmultipleSpot5("bouton1multipleSpot5");
+      quadra_left_midmultipleSpot5("bouton2multipleSpot5");
+      quadra_right_midmultipleSpot5("bouton3multipleSpot5");
+      quadra_rightmultipleSpot5("bouton4multipleSpot5");
+    );
+    if(selectedmultipleSpot5 == "none",
+      quintu_leftmultipleSpot5("bouton1multipleSpot5");
+      quintu_left_midmultipleSpot5("bouton2multipleSpot5");
+      quintu_midmultipleSpot5("bouton3multipleSpot5");
+      quintu_right_midmultipleSpot5("bouton4multipleSpot5");
+      quintu_rightmultipleSpot5("bouton5multipleSpot5");
+    );  
+  </action>
+  <action name="animationhideformultipleSpot5">
+    tween(hotspot[%1].ath, -55, 0.1);
+    tween(hotspot[%1].atv, 20, 0.1);
+    tween(hotspot[%1].alpha, 0, 0.5);
+  </action>
+
+
+
+  <!-- **** Deplacement animations **** -->
+  <action name ="quintu_leftmultipleSpot5">
+    tween(hotspot[%1].ath, calc(-55-6), 0.1);
+    tween(hotspot[%1].atv, calc(20-1), 0.1);
+    tween(hotspot[%1].alpha, 1, 0.5);
+  </action>
+  <action name ="quintu_left_midmultipleSpot5">
+    tween(hotspot[%1].ath, calc(-55-4), 0.1);
+    tween(hotspot[%1].atv, calc(20-4), 0.1);
+    tween(hotspot[%1].alpha, 1, 0.5);
+  </action>
+  <action name ="quintu_midmultipleSpot5">
+    tween(hotspot[%1].ath, calc(-55), 0.1);
+    tween(hotspot[%1].atv, calc(20-6), 0.1);
+    tween(hotspot[%1].alpha, 1, 0.5);
+  </action>
+  <action name ="quintu_right_midmultipleSpot5">
+    tween(hotspot[%1].ath, calc(-55+4), 0.1);
+    tween(hotspot[%1].atv, calc(20-4), 0.1);
+    tween(hotspot[%1].alpha, 1, 0.5);
+  </action>
+  <action name ="quintu_rightmultipleSpot5">
+    tween(hotspot[%1].ath, calc(-55+6), 0.1);
+    tween(hotspot[%1].atv, calc(20-1), 0.1);
+    tween(hotspot[%1].alpha, 1, 0.5);
+  </action>
+  <action name ="quadra_leftmultipleSpot5">
+    tween(hotspot[%1].ath, calc(-55-4), 0.1);
+    tween(hotspot[%1].atv, calc(20-3), 0.1);
+    tween(hotspot[%1].alpha, 1, 0.5);
+  </action>
+  <action name ="quadra_left_midmultipleSpot5">
+    tween(hotspot[%1].ath, calc(-55-2), 0.1);
+    tween(hotspot[%1].atv, calc(20-6), 0.1);
+    tween(hotspot[%1].alpha, 1, 0.5);
+  </action>
+  <action name ="quadra_right_midmultipleSpot5">
+    tween(hotspot[%1].ath, calc(-55+2), 0.1);
+    tween(hotspot[%1].atv, calc(20-6), 0.1);
+    tween(hotspot[%1].alpha, 1, 0.5);
+  </action>
+  <action name ="quadra_rightmultipleSpot5">
+    tween(hotspot[%1].ath, calc(-55+4), 0.1);
+    tween(hotspot[%1].atv, calc(20-3), 0.1);
+    tween(hotspot[%1].alpha, 1, 0.5);
+  </action>
+
+
+
+  <!-- **** Show & Hide functions **** -->
+  <action name="showpointsmultipleSpot5">
+        if (xml.scene == pano49,
+          animationshowfor5multipleSpot5();
+          set(hotspot[bouton1multipleSpot5].visible, true);
+          set(hotspot[bouton2multipleSpot5].visible, true);
+          set(hotspot[bouton3multipleSpot5].visible, true);
+          set(hotspot[bouton4multipleSpot5].visible, true);
+          set(hotspot[bouton5multipleSpot5].visible, true);
+        );
+        if (xml.scene == pano39533,
+          animationshowfor5multipleSpot5();
+          set(hotspot[bouton1multipleSpot5].visible, true);
+          set(hotspot[bouton2multipleSpot5].visible, true);
+          set(hotspot[bouton3multipleSpot5].visible, true);
+          set(hotspot[bouton4multipleSpot5].visible, true);
+          set(hotspot[bouton5multipleSpot5].visible, true);
+        );
+        if (xml.scene == pano39514,
+          animationshowfor5multipleSpot5();
+          set(hotspot[bouton1multipleSpot5].visible, true);
+          set(hotspot[bouton2multipleSpot5].visible, true);
+          set(hotspot[bouton3multipleSpot5].visible, true);
+          set(hotspot[bouton4multipleSpot5].visible, true);
+          set(hotspot[bouton5multipleSpot5].visible, true);
+        );
+        if (xml.scene == pano39512,
+          animationshowfor5multipleSpot5();
+          set(hotspot[bouton1multipleSpot5].visible, true);
+          set(hotspot[bouton2multipleSpot5].visible, true);
+          set(hotspot[bouton3multipleSpot5].visible, true);
+          set(hotspot[bouton4multipleSpot5].visible, true);
+          set(hotspot[bouton5multipleSpot5].visible, true);
+        );
+        if (xml.scene == pano39518,
+          animationshowfor5multipleSpot5();
+          set(hotspot[bouton1multipleSpot5].visible, true);
+          set(hotspot[bouton2multipleSpot5].visible, true);
+          set(hotspot[bouton3multipleSpot5].visible, true);
+          set(hotspot[bouton4multipleSpot5].visible, true);
+          set(hotspot[bouton5multipleSpot5].visible, true);
+        );
+        if (xml.scene == pano39517,
+          animationshowfor5multipleSpot5();
+          set(hotspot[bouton1multipleSpot5].visible, true);
+          set(hotspot[bouton2multipleSpot5].visible, true);
+          set(hotspot[bouton3multipleSpot5].visible, true);
+          set(hotspot[bouton4multipleSpot5].visible, true);
+          set(hotspot[bouton5multipleSpot5].visible, true);
+        );
+        if (xml.scene == pano39515,
+          animationshowfor5multipleSpot5();
+          set(hotspot[bouton1multipleSpot5].visible, true);
+          set(hotspot[bouton2multipleSpot5].visible, true);
+          set(hotspot[bouton3multipleSpot5].visible, true);
+          set(hotspot[bouton4multipleSpot5].visible, true);
+          set(hotspot[bouton5multipleSpot5].visible, true);
+        );
+        if (xml.scene == pano39516,
+          animationshowfor5multipleSpot5();
+          set(hotspot[bouton1multipleSpot5].visible, true);
+          set(hotspot[bouton2multipleSpot5].visible, true);
+          set(hotspot[bouton3multipleSpot5].visible, true);
+          set(hotspot[bouton4multipleSpot5].visible, true);
+          set(hotspot[bouton5multipleSpot5].visible, true);
+        );
+        if (xml.scene == pano39519,
+          animationshowfor5multipleSpot5();
+          set(hotspot[bouton1multipleSpot5].visible, true);
+          set(hotspot[bouton2multipleSpot5].visible, true);
+          set(hotspot[bouton3multipleSpot5].visible, true);
+          set(hotspot[bouton4multipleSpot5].visible, true);
+          set(hotspot[bouton5multipleSpot5].visible, true);
+        );
+        if (xml.scene == pano39520,
+          animationshowfor5multipleSpot5();
+          set(hotspot[bouton1multipleSpot5].visible, true);
+          set(hotspot[bouton2multipleSpot5].visible, true);
+          set(hotspot[bouton3multipleSpot5].visible, true);
+          set(hotspot[bouton4multipleSpot5].visible, true);
+          set(hotspot[bouton5multipleSpot5].visible, true);
+        );
+        if (xml.scene == pano39521,
+          animationshowfor5multipleSpot5();
+          set(hotspot[bouton1multipleSpot5].visible, true);
+          set(hotspot[bouton2multipleSpot5].visible, true);
+          set(hotspot[bouton3multipleSpot5].visible, true);
+          set(hotspot[bouton4multipleSpot5].visible, true);
+          set(hotspot[bouton5multipleSpot5].visible, true);
+        );
+  </action>
+  <action name="hidepointsmultipleSpot5">
+    animationhideformultipleSpot5("bouton1multipleSpot5");
+    animationhideformultipleSpot5("bouton2multipleSpot5");
+    animationhideformultipleSpot5("bouton3multipleSpot5");
+    animationhideformultipleSpot5("bouton4multipleSpot5");
+    animationhideformultipleSpot5("bouton5multipleSpot5");
+
+    delayedcall(0.1,
+      set(hotspot[bouton1multipleSpot5].visible, false);
+      set(hotspot[bouton2multipleSpot5].visible, false);
+      set(hotspot[bouton3multipleSpot5].visible, false);
+      set(hotspot[bouton4multipleSpot5].visible, false);
+      set(hotspot[bouton5multipleSpot5].visible, false);
+    );
+  </action>
+  
+
+
+  <!-- **** Events functions **** -->
+  <action name="showPanoPointSpotsmultipleSpot5">
+    if(selectedmultipleSpot5 != "bouton1multipleSpot5" AND selectedmultipleSpot5 != "bouton2multipleSpot5" AND selectedmultipleSpot5 != "bouton3multipleSpot5" AND selectedmultipleSpot5 != "bouton4multipleSpot5" AND selectedmultipleSpot5 != "bouton5multipleSpot5",
+      def(selectedmultipleSpot5, string, "none");
+    );
+  </action>
+  <action name="showPanoPlusSpotmultipleSpot5">
+    def(displayedmultipleSpot5, bool, false);
+        if ((xml.scene == pano49) OR (displayedmultipleSpot5),
+          set(hotspot[plusmultipleSpot5].visible, true);
+          def(displayedmultipleSpot5, bool, true);,
+          set(hotspot[plusmultipleSpot5].visible, false);
+        );
+        if ((xml.scene == pano39533) OR (displayedmultipleSpot5),
+          set(hotspot[plusmultipleSpot5].visible, true);
+          def(displayedmultipleSpot5, bool, true);,
+          set(hotspot[plusmultipleSpot5].visible, false);
+        );
+        if ((xml.scene == pano39514) OR (displayedmultipleSpot5),
+          set(hotspot[plusmultipleSpot5].visible, true);
+          def(displayedmultipleSpot5, bool, true);,
+          set(hotspot[plusmultipleSpot5].visible, false);
+        );
+        if ((xml.scene == pano39512) OR (displayedmultipleSpot5),
+          set(hotspot[plusmultipleSpot5].visible, true);
+          def(displayedmultipleSpot5, bool, true);,
+          set(hotspot[plusmultipleSpot5].visible, false);
+        );
+        if ((xml.scene == pano39518) OR (displayedmultipleSpot5),
+          set(hotspot[plusmultipleSpot5].visible, true);
+          def(displayedmultipleSpot5, bool, true);,
+          set(hotspot[plusmultipleSpot5].visible, false);
+        );
+        if ((xml.scene == pano39517) OR (displayedmultipleSpot5),
+          set(hotspot[plusmultipleSpot5].visible, true);
+          def(displayedmultipleSpot5, bool, true);,
+          set(hotspot[plusmultipleSpot5].visible, false);
+        );
+        if ((xml.scene == pano39515) OR (displayedmultipleSpot5),
+          set(hotspot[plusmultipleSpot5].visible, true);
+          def(displayedmultipleSpot5, bool, true);,
+          set(hotspot[plusmultipleSpot5].visible, false);
+        );
+        if ((xml.scene == pano39516) OR (displayedmultipleSpot5),
+          set(hotspot[plusmultipleSpot5].visible, true);
+          def(displayedmultipleSpot5, bool, true);,
+          set(hotspot[plusmultipleSpot5].visible, false);
+        );
+        if ((xml.scene == pano39519) OR (displayedmultipleSpot5),
+          set(hotspot[plusmultipleSpot5].visible, true);
+          def(displayedmultipleSpot5, bool, true);,
+          set(hotspot[plusmultipleSpot5].visible, false);
+        );
+        if ((xml.scene == pano39520) OR (displayedmultipleSpot5),
+          set(hotspot[plusmultipleSpot5].visible, true);
+          def(displayedmultipleSpot5, bool, true);,
+          set(hotspot[plusmultipleSpot5].visible, false);
+        );
+        if ((xml.scene == pano39521) OR (displayedmultipleSpot5),
+          set(hotspot[plusmultipleSpot5].visible, true);
+          def(displayedmultipleSpot5, bool, true);,
+          set(hotspot[plusmultipleSpot5].visible, false);
+        );
+  </action>
+
+  <!-- **** Events trigger **** -->
+  <events name="multipleSpot5showevents" onTourStart="showPanoPointSpotsmultipleSpot5" onPanoStart="showPanoPlusSpotmultipleSpot5" keep="true"/>
+
+  <!-- Fullscreen Management -->
+  <action name="exitFullScreen" devices="fullscreensupport">set(tour_fullscreen,false);js(setFullscreen(false));</action>
+  <action name="enterFullScreen" devices="fullscreensupport">set(tour_fullscreen,true);js(setFullscreen(true));</action>
+  <action name="switchFullScreen">if(tour_fullscreen,exitFullScreen();,enterFullScreen(););</action>
+
+  
+  <events name="krpanoExitFullscreenEvent"
+    onexitfullscreen="if(tour_fullscreen,exitFullScreenChangeEvent(););"
+    keep="true" />
+
+  <action name="exitFullScreenChangeEvent" devices="fullscreensupport">set(tour_fullscreen,false);events.dispatch(onexitfullscreen);</action>
+  <action name="enterFullScreenChangeEvent" devices="fullscreensupport">set(tour_fullscreen,true);events.dispatch(onenterfullscreen);</action>
+  <action name="exitFullScreenFallback">set(fullscreen,false);</action>
+  <action name="enterFullScreenFallback">set(fullscreen,true);</action>
+  
+  <action name="resizeFullScreenEvent">delayedcall(0,updatescreen(););</action>
+
+<action name="viewControlMoveUp">
+	if(%1,
+		if(%2,
+			set(isfullvertical, false);
+			ifnot(scene[get(xml.scene)].planar,
+				sub(viewvfov, panoview.vmax, panoview.vmin);
+				if (viewvfov == 180,
+					set(isfullvertical, true);
+				);
+			);
+			if(isfullvertical == false AND calc(view.vlookat-%2) LT view.vlookatmin,
+				moveto(get(view.hlookat), get(view.vlookatmin));
+			,
+				moveto(get(view.hlookat), calc(view.vlookat-%2));
+			);
+		,
+			set(vlookat_moveforce, -1);
+			delayedcall(0.1, viewControlMoveVertStop());
+		);
+	,
+		set(vlookat_moveforce, -1);
+	);
+</action>
+<action name="viewControlMoveDown">
+	if(%1,
+		if(%2,
+			set(isfullvertical, false);
+			ifnot(scene[get(xml.scene)].planar,
+				sub(viewvfov, panoview.vmax, panoview.vmin);
+				if (viewvfov == 180,
+					set(isfullvertical, true);
+				);
+			);
+			if(sceneisfull360 == false AND calc(view.vlookat+%2) GT view.vlookatmax,
+				moveto(get(view.hlookat), get(view.vlookatmax));
+			,
+				moveto(get(view.hlookat), calc(view.vlookat+%2));
+			);
+		,
+			set(vlookat_moveforce, +1);
+			delayedcall(0.1, viewControlMoveVertStop());
+		);
+	,
+		set(vlookat_moveforce, +1);
+	);
+</action>
+<action name="viewControlMoveLeft">
+	if(%1,
+		if(%2,
+			set(isfullhorizontal, false);
+			ifnot(scene[get(xml.scene)].planar,
+				sub(viewhfov, panoview.hmax, panoview.hmin);
+				if (viewhfov == 360,
+					set(isfullhorizontal, true);
+				);
+			);
+			if(isfullhorizontal == false AND calc(view.hlookat-%2) LT view.hlookatmin,
+				moveto(get(view.hlookatmin), get(view.vlookat));
+			,
+				moveto(calc(view.hlookat-%2), get(view.vlookat));
+			);
+		,
+			set(hlookat_moveforce, -1);
+			delayedcall(0.1, viewControlMoveHoriStop());
+		);
+	,
+		set(hlookat_moveforce, -1);
+	);
+</action>
+<action name="viewControlMoveRight">
+	if(%1,
+		if(%2,
+			set(isfullhorizontal, false);
+			ifnot(scene[get(xml.scene)].planar,
+				sub(viewhfov, panoview.hmax, panoview.hmin);
+				if (viewhfov == 360,
+					set(isfullhorizontal, true);
+				);
+			);
+			if(isfullhorizontal == false AND calc(view.hlookat+%2) GT view.hlookatmax,
+				moveto(get(view.hlookatmax), get(view.vlookat));
+			,
+				moveto(calc(view.hlookat+%2), get(view.vlookat));
+			);
+		,
+			set(hlookat_moveforce, +1);
+			delayedcall(0.1, viewControlMoveHoriStop());
+			
+		);
+	,
+		set(hlookat_moveforce, +1);
+	);
+</action>
+<action name="viewControlMoveHoriStop">
+	set(hlookat_moveforce, 0);
+</action>
+<action name="viewControlMoveVertStop">
+	set(vlookat_moveforce, 0);
+</action>
+
+  <!-- Hide / Show Controls -->
+  <action name="hideTourControls">set(tour_displaycontrols, false);events.dispatch(hidetourcontrols);</action>
+  <action name="showTourControls">set(tour_displaycontrols, true); events.dispatch(showtourcontrols);</action>
+
+
+	<!-- WebVR plugin for VR availability tests -->
+
+	<plugin name="ptpvrmode" devices="html5" keep="true"
+		url="%FIRSTXML%/graphics/webvr.js"
+		mobilevr_support="true"
+		mobilevr_fake_support="false"
+		vr_cursor=""
+		vr_cursor_enabled="false"
+		onavailable="delayedcall(1, checkVrAvailability(););"
+		onunavailable="checkVrUnavailable();"
+		/>
+	<action name="checkVrAvailability">
+		if(plugin[ptpvrmode],
+			if (plugin[ptpvrmode].isavailable,
+				set(tour_vrdevices, true);
+				events.dispatch(onvravailable);
+			,
+				set(tour_vrdevices, false);
+			);
+		,
+			checkVrUnavailable();
+		);
+	</action>
+	<action name="checkVrUnavailable">
+		set(tour_vrdevices, false);
+		events.dispatch(onvrunavailable);
+	</action>
+</krpano>

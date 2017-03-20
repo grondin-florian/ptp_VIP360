@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<krpano>
+
+<!-- ************************ -->
+<!--         Messages         -->
+<!-- ************************ -->
+
+  <data name="fr_project_title"><![CDATA[Leroy Merlin]]></data>
+  <data name="fr_project_author_name"><![CDATA[Groupe VIP 360]]></data>
+  <data name="fr_project_author_url"><![CDATA[http://www.groupe-vip360.com/]]></data>
+
+
+  <data name="fr_panogroup50_title"><![CDATA[Cuisine Milano taupe]]></data>
+
+  <data name="fr_pano39_title"><![CDATA[Cuisine Milano taupe]]></data>
+  <data name="fr_spotpoint87_tooltip"><![CDATA[Cuisine Délice noir]]></data>
+  <data name="fr_spotpoint89_tooltip"><![CDATA[Cuisine Topaze bleu]]></data>
+  <data name="fr_spotpoint29570_tooltip"><![CDATA[Cuisine Nordik]]></data>
+
+  <data name="fr_panogroup53_title"><![CDATA[Cuisine Topaze bleu]]></data>
+
+  <data name="fr_pano42_title"><![CDATA[Cuisine Topaze bleu]]></data>
+  <data name="fr_spotpoint63_tooltip"><![CDATA[Cuisine Délice noir]]></data>
+  <data name="fr_spotpoint86_tooltip"><![CDATA[Cuisine Milano taupe]]></data>
+
+  <data name="fr_panogroup54_title"><![CDATA[Cuisine Délice noir]]></data>
+
+  <data name="fr_pano43_title"><![CDATA[Cuisine Délice noir]]></data>
+  <data name="fr_spotpoint64_tooltip"><![CDATA[Cuisine Grenade]]></data>
+  <data name="fr_spotpoint80_tooltip"><![CDATA[Cuisine Oléron]]></data>
+  <data name="fr_spotpoint88_tooltip"><![CDATA[Cuisine Milano taupe]]></data>
+
+  <data name="fr_panogroup55_title"><![CDATA[Cuisine Grenade]]></data>
+
+  <data name="fr_pano44_title"><![CDATA[Cuisine Grenade]]></data>
+  <data name="fr_spotpoint67_tooltip"><![CDATA[Cuisine Délice noir]]></data>
+
+  <data name="fr_panogroup56_title"><![CDATA[Cuisine Oléron]]></data>
+
+  <data name="fr_pano45_title"><![CDATA[Cuisine Oléron]]></data>
+  <data name="fr_spotpoint68_tooltip"><![CDATA[Cuisine Cyclone]]></data>
+  <data name="fr_spotpoint81_tooltip"><![CDATA[Cuisine Délice noir]]></data>
+  <data name="fr_spotpoint82_tooltip"><![CDATA[Cuisine Cosy]]></data>
+  <data name="fr_spotpoint29501_tooltip"><![CDATA[Cuisine Rio gris]]></data>
+
+  <data name="fr_panogroup57_title"><![CDATA[Cuisine Cyclone]]></data>
+
+  <data name="fr_pano46_title"><![CDATA[Cuisine Cyclone]]></data>
+  <data name="fr_spotpoint69_tooltip"><![CDATA[Cuisine Oléron]]></data>
+
+  <data name="fr_panogroup58_title"><![CDATA[Cuisine Cosy]]></data>
+
+  <data name="fr_pano47_title"><![CDATA[Cuisine Cosy]]></data>
+  <data name="fr_spotpoint77_tooltip"><![CDATA[Cuisine Rio gris]]></data>
+  <data name="fr_spotpoint78_tooltip"><![CDATA[Cuisine Oléron]]></data>
+  <data name="fr_spotpoint29502_tooltip"><![CDATA[Cuisine Délice blanc]]></data>
+
+  <data name="fr_panogroup59_title"><![CDATA[Cuisine Rio gris]]></data>
+
+  <data name="fr_pano48_title"><![CDATA[Cuisine Rio gris]]></data>
+  <data name="fr_spotpoint76_tooltip"><![CDATA[Cuisine Délice blanc]]></data>
+  <data name="fr_spotpoint83_tooltip"><![CDATA[Cuisine Cosy]]></data>
+  <data name="fr_spotpoint29503_tooltip"><![CDATA[Cuisine Oléron]]></data>
+
+  <data name="fr_panogroup60_title"><![CDATA[Cuisine Délice blanc]]></data>
+
+  <data name="fr_pano49_title"><![CDATA[Cuisine Délice blanc<br><span style="color:#3c3c3b ; font-style: italic ; font-size:14px">Classique</span>]]></data>
+  <data name="fr_spotpoint73_tooltip"><![CDATA[Cuisine Berlin]]></data>
+  <data name="fr_spotpoint74_tooltip"><![CDATA[Cuisine Nordik]]></data>
+  <data name="fr_spotpoint75_tooltip"><![CDATA[Cuisine Rio gris]]></data>
+  <data name="fr_spotpoint29504_tooltip"><![CDATA[Cuisine Cosy]]></data>
+  <data name="fr_spotpoint29505_tooltip"><![CDATA[Cuisine Oléron]]></data>
+  <data name="fr_pano39512_title"><![CDATA[Modifier les murs <br><span style="color:#3c3c3b ; font-style: italic ; font-size:14px">Gris Béton</span>]]></data>
+  <data name="fr_spotpoint39535_tooltip"><![CDATA[Cuisine Nordik]]></data>
+  <data name="fr_spotpoint39536_tooltip"><![CDATA[Cuisine Berlin]]></data>
+  <data name="fr_spotpoint39555_tooltip"><![CDATA[Cuisine Oléron]]></data>
+  <data name="fr_spotpoint39565_tooltip"><![CDATA[Cuisine Cosy]]></data>
+  <data name="fr_spotpoint39575_tooltip"><![CDATA[Cuisine Rio gris]]></data>
+  <data name="fr_pano39514_title"><![CDATA[Modifier les murs <br><span style="color:#3c3c3b ; font-style: italic ; font-size:14px">Rouge Tokyo</span>]]></data>
+  <data name="fr_spotpoint39537_tooltip"><![CDATA[Cuisine Nordik]]></data>
+  <data name="fr_spotpoint39538_tooltip"><![CDATA[Cuisine Berlin]]></data>
+  <data name="fr_spotpoint39556_tooltip"><![CDATA[Cuisine Oléron]]></data>
+  <data name="fr_spotpoint39566_tooltip"><![CDATA[Cuisine Cosy]]></data>
+  <data name="fr_spotpoint39576_tooltip"><![CDATA[Cuisine Rio gris]]></data>
+  <data name="fr_pano39533_title"><![CDATA[Modifier les murs <br><span style="color:#3c3c3b ; font-style: italic ; font-size:14px">Or Noir</span>]]></data>
+  <data name="fr_spotpoint39539_tooltip"><![CDATA[Cuisine Nordik]]></data>
+  <data name="fr_spotpoint39540_tooltip"><![CDATA[Cuisine Berlin]]></data>
+  <data name="fr_spotpoint39557_tooltip"><![CDATA[Cuisine Oléron]]></data>
+  <data name="fr_spotpoint39567_tooltip"><![CDATA[Cuisine Cosy]]></data>
+  <data name="fr_spotpoint39577_tooltip"><![CDATA[Cuisine Rio gris]]></data>
+  <data name="fr_pano39519_title"><![CDATA[Modifier le sol <br><span style="color:#3c3c3b ; font-style: italic ; font-size:14px">Blanc</span>]]></data>
+  <data name="fr_spotpoint39547_tooltip"><![CDATA[Cuisine Berlin]]></data>
+  <data name="fr_spotpoint39551_tooltip"><![CDATA[Cuisine Nordik]]></data>
+  <data name="fr_spotpoint39558_tooltip"><![CDATA[Cuisine Oléron]]></data>
+  <data name="fr_spotpoint39568_tooltip"><![CDATA[Cuisine Cosy]]></data>
+  <data name="fr_spotpoint39578_tooltip"><![CDATA[Cuisine Rio gris]]></data>
+  <data name="fr_pano39521_title"><![CDATA[Modifier le sol <br><span style="color:#3c3c3b ; font-style: italic ; font-size:14px">Parquet</span>]]></data>
+  <data name="fr_spotpoint39545_tooltip"><![CDATA[Cuisine Nordik]]></data>
+  <data name="fr_spotpoint39546_tooltip"><![CDATA[Cuisine Berlin]]></data>
+  <data name="fr_spotpoint39559_tooltip"><![CDATA[Cuisine Oléron]]></data>
+  <data name="fr_spotpoint39569_tooltip"><![CDATA[Cuisine Cosy]]></data>
+  <data name="fr_spotpoint39579_tooltip"><![CDATA[Cuisine Rio gris]]></data>
+  <data name="fr_pano39520_title"><![CDATA[Modifier le sol <br><span style="color:#3c3c3b ; font-style: italic ; font-size:14px">Gris foncé</span>]]></data>
+  <data name="fr_spotpoint39543_tooltip"><![CDATA[Cuisine Nordik]]></data>
+  <data name="fr_spotpoint39544_tooltip"><![CDATA[Cuisine Berlin]]></data>
+  <data name="fr_spotpoint39560_tooltip"><![CDATA[Cuisine Oléron]]></data>
+  <data name="fr_spotpoint39570_tooltip"><![CDATA[Cuisine Cosy]]></data>
+  <data name="fr_spotpoint39580_tooltip"><![CDATA[Cuisine Rio gris]]></data>
+  <data name="fr_pano39518_title"><![CDATA[Modifier le Plan de travail <br><span style="color:#3c3c3b ; font-style: italic ; font-size:14px">Chêne Cendré</span>]]></data>
+  <data name="fr_spotpoint39541_tooltip"><![CDATA[Cuisine Nordik]]></data>
+  <data name="fr_spotpoint39542_tooltip"><![CDATA[Cuisine Berlin]]></data>
+  <data name="fr_spotpoint39561_tooltip"><![CDATA[Cuisine Oléron]]></data>
+  <data name="fr_spotpoint39571_tooltip"><![CDATA[Cuisine Cosy]]></data>
+  <data name="fr_spotpoint39581_tooltip"><![CDATA[Cuisine Rio gris]]></data>
+  <data name="fr_pano39517_title"><![CDATA[Modifier le Plan de travail <br><span style="color:#3c3c3b ; font-style: italic ; font-size:14px">Blanc Marbre</span>]]></data>
+  <data name="fr_spotpoint39548_tooltip"><![CDATA[Cuisine Berlin]]></data>
+  <data name="fr_spotpoint39552_tooltip"><![CDATA[Cuisine Nordik]]></data>
+  <data name="fr_spotpoint39562_tooltip"><![CDATA[Cuisine Oléron]]></data>
+  <data name="fr_spotpoint39572_tooltip"><![CDATA[Cuisine Cosy]]></data>
+  <data name="fr_spotpoint39582_tooltip"><![CDATA[Cuisine Rio gris]]></data>
+  <data name="fr_pano39515_title"><![CDATA[Modifier le Plan de travail <br><span style="color:#3c3c3b ; font-style: italic ; font-size:14px">Anthracite</span>]]></data>
+  <data name="fr_spotpoint39549_tooltip"><![CDATA[Cuisine Berlin]]></data>
+  <data name="fr_spotpoint39553_tooltip"><![CDATA[Cuisine Nordik]]></data>
+  <data name="fr_spotpoint39563_tooltip"><![CDATA[Cuisine Oléron]]></data>
+  <data name="fr_spotpoint39573_tooltip"><![CDATA[Cuisine Cosy]]></data>
+  <data name="fr_spotpoint39583_tooltip"><![CDATA[Cuisine Rio gris]]></data>
+  <data name="fr_pano39516_title"><![CDATA[Modifier le Plan de travail <br><span style="color:#3c3c3b ; font-style: italic ; font-size:14px">Béton</span>]]></data>
+  <data name="fr_spotpoint39550_tooltip"><![CDATA[Cuisine Berlin]]></data>
+  <data name="fr_spotpoint39554_tooltip"><![CDATA[Cuisine Nordik]]></data>
+  <data name="fr_spotpoint39564_tooltip"><![CDATA[Cuisine Oléron]]></data>
+  <data name="fr_spotpoint39574_tooltip"><![CDATA[Cuisine Cosy]]></data>
+  <data name="fr_spotpoint39584_tooltip"><![CDATA[Cuisine Rio gris]]></data>
+
+  <data name="fr_panogroup51_title"><![CDATA[Cuisine Nordik]]></data>
+
+  <data name="fr_pano40_title"><![CDATA[Cuisine Nordik]]></data>
+  <data name="fr_spotpoint79_tooltip"><![CDATA[Cuisine Délice blanc]]></data>
+  <data name="fr_spotpoint84_tooltip"><![CDATA[Cuisine Berlin]]></data>
+  <data name="fr_spotpoint29508_tooltip"><![CDATA[Retour à l'entrée du showroom]]></data>
+
+  <data name="fr_panogroup52_title"><![CDATA[Cuisine Berlin]]></data>
+
+  <data name="fr_pano41_title"><![CDATA[Cuisine Berlin]]></data>
+  <data name="fr_spotpoint71_tooltip"><![CDATA[Cuisine Nordik]]></data>
+  <data name="fr_spotpoint72_tooltip"><![CDATA[Cuisine Délice blanc]]></data>
+  <data name="fr_spotpoint29509_tooltip"><![CDATA[Retour à l'entrée du showroom]]></data>
+
+
+
+
+
+
+  <data name="fr_analyticsgoogle_tracking_id"><![CDATA[UA-67317939-1]]></data>
+  <data name="fr_contextmenuopenwebsitelabel1"><![CDATA[VIP Studio 360]]></data>
+  <data name="fr_contextmenuwebsiteurl1"><![CDATA[http://vip-studio360.fr]]></data>
+  <data name="fr_contextmenuopenFsLabel"><![CDATA[Plein écran]]></data>
+  <data name="fr_contextmenucloseFsLabel"><![CDATA[Quitter le plein écran]]></data>
+  <data name="fr_studioControlBarmoveLeftTip"><![CDATA[Tourner à gauche]]></data>
+  <data name="fr_studioControlBarmoveRightTip"><![CDATA[Tourner à droite]]></data>
+  <data name="fr_studioControlBarmoveUpTip"><![CDATA[Monter]]></data>
+  <data name="fr_studioControlBarmoveDownTip"><![CDATA[Descendre]]></data>
+  <data name="fr_studioControlBaropenFsTip"><![CDATA[Passer en plein écran]]></data>
+  <data name="fr_studioControlBarcloseFsTip"><![CDATA[Quitter le plein écran]]></data>
+  <data name="fr_studioControlBardisplayHelpTip"><![CDATA[Montrer les aides]]></data>
+  <data name="fr_studioControlBarhideHelpTip"><![CDATA[Masquer les aides]]></data>
+  <data name="fr_studioControlBardisplayControlsTip"><![CDATA[Afficher les contrôles]]></data>
+  <data name="fr_studioControlBarhideControlsTip"><![CDATA[Masquer les contrôles]]></data>
+  <data name="fr_studioControlBarctrlmodeDragTip"><![CDATA[Changer le mode de navigation]]></data>
+  <data name="fr_studioControlBarctrlmodeMoveTip"><![CDATA[Changer le mode de navigation]]></data>
+  <data name="fr_button1tooltip"><![CDATA[]]></data>
+  <data name="fr_button1websiteViewer|websiteViewer|displaywebsitewebsite_url"><![CDATA[http://www.leroymerlin.fr/]]></data>
+  <data name="fr_button1websiteViewer|websiteViewer|displaywebsitewebsite_title"><![CDATA[]]></data>
+  <data name="fr_button3tooltip"><![CDATA[]]></data>
+  <data name="fr_webvrbuttontooltip"><![CDATA[]]></data>
+  <data name="fr_websiteViewerclose_text"><![CDATA[Fermer]]></data>
+  <data name="fr_multipleSpot4tooltipUrl"><![CDATA[Modifier la couleur du mur]]></data>
+  <data name="fr_multipleSpot4tooltip1Url"><![CDATA[Gris béton]]></data>
+  <data name="fr_multipleSpot4tooltip2Url"><![CDATA[Rouge Tokyo]]></data>
+  <data name="fr_multipleSpot4tooltip3Url"><![CDATA[Or noir]]></data>
+  <data name="fr_multipleSpot4tooltip4Url"><![CDATA[Blanc]]></data>
+  <data name="fr_multipleSpot4panoid1160"><![CDATA[pano49]]></data>
+  <data name="fr_multipleSpot4panoid1171"><![CDATA[pano39533]]></data>
+  <data name="fr_multipleSpot4panoid1182"><![CDATA[pano39514]]></data>
+  <data name="fr_multipleSpot4panoid1193"><![CDATA[pano39512]]></data>
+  <data name="fr_multipleSpot4panoid1234"><![CDATA[pano39518]]></data>
+  <data name="fr_multipleSpot4panoid1245"><![CDATA[pano39517]]></data>
+  <data name="fr_multipleSpot4panoid1256"><![CDATA[pano39515]]></data>
+  <data name="fr_multipleSpot4panoid1267"><![CDATA[pano39516]]></data>
+  <data name="fr_multipleSpot4panoid1278"><![CDATA[pano39519]]></data>
+  <data name="fr_multipleSpot4panoid1289"><![CDATA[pano39520]]></data>
+  <data name="fr_multipleSpot4panoid12910"><![CDATA[pano39521]]></data>
+  <data name="fr_multipleSpot41tooltipUrl"><![CDATA[Modifier le sol]]></data>
+  <data name="fr_multipleSpot41tooltip1Url"><![CDATA[Blanc]]></data>
+  <data name="fr_multipleSpot41tooltip2Url"><![CDATA[Gris foncé]]></data>
+  <data name="fr_multipleSpot41tooltip3Url"><![CDATA[Parquet]]></data>
+  <data name="fr_multipleSpot41tooltip4Url"><![CDATA[Gris]]></data>
+  <data name="fr_multipleSpot41panoid1180"><![CDATA[pano49]]></data>
+  <data name="fr_multipleSpot41panoid1191"><![CDATA[pano39533]]></data>
+  <data name="fr_multipleSpot41panoid1202"><![CDATA[pano39514]]></data>
+  <data name="fr_multipleSpot41panoid1213"><![CDATA[pano39512]]></data>
+  <data name="fr_multipleSpot41panoid1224"><![CDATA[pano39518]]></data>
+  <data name="fr_multipleSpot41panoid1235"><![CDATA[pano39517]]></data>
+  <data name="fr_multipleSpot41panoid1246"><![CDATA[pano39515]]></data>
+  <data name="fr_multipleSpot41panoid1257"><![CDATA[pano39516]]></data>
+  <data name="fr_multipleSpot41panoid1268"><![CDATA[pano39519]]></data>
+  <data name="fr_multipleSpot41panoid1279"><![CDATA[pano39520]]></data>
+  <data name="fr_multipleSpot41panoid12810"><![CDATA[pano39521]]></data>
+  <data name="fr_multipleSpot5tooltipUrl"><![CDATA[Modifier le plan de travail]]></data>
+  <data name="fr_multipleSpot5tooltip1Url"><![CDATA[Chêne cendré]]></data>
+  <data name="fr_multipleSpot5tooltip2Url"><![CDATA[Blanc marbre]]></data>
+  <data name="fr_multipleSpot5tooltip3Url"><![CDATA[Anthracite]]></data>
+  <data name="fr_multipleSpot5tooltip4Url"><![CDATA[Béton]]></data>
+  <data name="fr_multipleSpot5tooltip5Url"><![CDATA[Stratifié]]></data>
+  <data name="fr_multipleSpot5panoid1060"><![CDATA[pano49]]></data>
+  <data name="fr_multipleSpot5panoid1071"><![CDATA[pano39533]]></data>
+  <data name="fr_multipleSpot5panoid1082"><![CDATA[pano39514]]></data>
+  <data name="fr_multipleSpot5panoid1093"><![CDATA[pano39512]]></data>
+  <data name="fr_multipleSpot5panoid1104"><![CDATA[pano39518]]></data>
+  <data name="fr_multipleSpot5panoid1115"><![CDATA[pano39517]]></data>
+  <data name="fr_multipleSpot5panoid1126"><![CDATA[pano39515]]></data>
+  <data name="fr_multipleSpot5panoid1137"><![CDATA[pano39516]]></data>
+  <data name="fr_multipleSpot5panoid1148"><![CDATA[pano39519]]></data>
+  <data name="fr_multipleSpot5panoid1159"><![CDATA[pano39520]]></data>
+  <data name="fr_multipleSpot5panoid11610"><![CDATA[pano39521]]></data>
+
+
+  <data name="fr_vr_setup_hmd0"><![CDATA[CHOIX DU HMD]]></data>
+  <data name="fr_vr_setup_advanced"><![CDATA[PARAMETRES AVANCES]]></data>
+  <data name="fr_vr_setup_title"><![CDATA[PARAMETRES WEB VR]]></data>
+  <data name="fr_vr_setup_dvn1"><![CDATA[Appareil:]]></data>
+  <data name="fr_vr_setup_siz1"><![CDATA[Taille de l&#39;écran:]]></data>
+  <data name="fr_vr_setup_ipd1"><![CDATA[IPD:]]></data>
+  <data name="fr_vr_setup_hmd1"><![CDATA[HMD:]]></data>
+  <data name="fr_vr_setup_hmd3"><![CDATA[Personnaliser]]></data>
+  <data name="fr_vr_setup_cal"><![CDATA[Calibrer le gyroscope]]></data>
+  <data name="fr_vr_setup_sav"><![CDATA[ENREGISTRER]]></data>
+  <data name="fr_vr_setup_rst"><![CDATA[REINITIALISER]]></data>
+  <data name="fr_vr_setup_simple"><![CDATA[SIMPLE]]></data>
+  <data name="fr_vr_setup_cls"><![CDATA[FERMER]]></data>
+  <data name="fr_vr_setup_m31"><![CDATA[PARAMETRES DU HMD]]></data>
+  <data name="fr_vr_setup_fov1"><![CDATA[FOV:]]></data>
+  <data name="fr_vr_setup_dst1"><![CDATA[Distorsion:]]></data>
+  <data name="fr_vr_setup_d2tx"><![CDATA[Distorsion 2:]]></data>
+  <data name="fr_vr_setup_vig1"><![CDATA[Vignettage:]]></data>
+  <data name="fr_vr_setup_cac1"><![CDATA[Aberration chromatique:]]></data>
+  <data name="fr_vr_setup_olp1"><![CDATA[Recouvrement:]]></data>
+  <data name="fr_vr_setup_m35"><![CDATA[RETOUR]]></data>
+  <data name="fr_vr_setup_cb1"><![CDATA[GYROSCOPE]]></data>
+  <data name="fr_vr_setup_cb2"><![CDATA[Placer l&#39;appareil sur une surface plane et stable[br]puis tapez sur CALIBRER[br]pour corriger la dérive du gyroscope.]]></data>
+  <data name="fr_vr_setup_cb3"><![CDATA[CALIBRER]]></data>
+  <data name="fr_vr_setup_cb4"><![CDATA[REINITIALISER]]></data>
+  <data name="fr_vr_setup_cb5"><![CDATA[RETOUR]]></data>
+  <data name="fr_vr_setup_cb6"><![CDATA[Calibration en cours...]]></data>
+  <data name="fr_vr_setup_cb7"><![CDATA[Calibration réussie]]></data>
+  <data name="fr_vr_setup_cb8"><![CDATA[Echec de la calibration]]></data>
+  <data name="fr_vr_setup_unavailable"><![CDATA[Le mode VR[br]n&#39;est pas disponible sur cet appareil]]></data>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</krpano>

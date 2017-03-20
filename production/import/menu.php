@@ -1,4 +1,4 @@
-<div class="col-md-3 left_col">
+<div class="col-md-3 left_col menu_fixed">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
             <a href="<?php echo __PROD__; ?>" class="site_title"><i class="fa fa-play-circle"></i> <span>PTP VIP360</span></a>
@@ -17,6 +17,25 @@
             </div>
         </div>
         <!-- /menu profile quick info -->
+
+        <?php if(array_key_exists("xmls", $_SESSION) && count($_SESSION['xmls']) === 7) { ?>
+        <br />
+
+        <!-- sidebar menu -->
+        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div class="menu_section">
+                <h3>Général</h3>
+                <ul class="nav side-menu">
+                    <li><a><i class="fa fa-desktop"></i> Ancres de la page <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="#xmlFiles_display"><b>Affichage des XML</b></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- /sidebar menu -->
+        <?php } ?>
 
         <!-- /menu footer buttons -->
         <div class="sidebar-footer hidden-small">

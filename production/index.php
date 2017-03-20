@@ -53,15 +53,15 @@ require_once 'import/header.php';
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>Liste des fichiers XML <small><?php echo $projectName; ?></small></h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a class="remove-xmls">Supprimer tout</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a class="remove-xmls">Supprimer tout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
@@ -73,7 +73,7 @@ require_once 'import/header.php';
                                         <img src="<?php echo __IMGDIR__.'icon/xml-file.png' ?>" alt="<?php echo key($xml_array); ?>" />
                                     </span>
                                     <span>
-                                        <span><?php echo key($xml_array); ?>.xml</span>
+                                        <b><?php echo key($xml_array); ?>.xml</b>
                                     </span>
                                 </a>
                             </li>
@@ -82,6 +82,7 @@ require_once 'import/header.php';
                     </div>
                 </div>
             </div>
+
             <script type="text/javascript">var PROJECTNAME = '<?php echo $projectName; ?>'</script>
             <?php } ?>
         </div>
