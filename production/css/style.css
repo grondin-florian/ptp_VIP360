@@ -1,3 +1,7 @@
 .login_content h1::before, .login_content h1::after {
     width: 12%;
 }
+
+.site_title i {
+	border: medium none;
+}

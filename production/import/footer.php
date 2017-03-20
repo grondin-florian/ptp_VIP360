@@ -27,6 +27,12 @@
         <!-- Custom Theme Scripts -->
         <script src="<?php echo __ROOT__; ?>build/js/custom.min.js"></script>
 
+        <script type="text/javascript">
+            var UPLOAD_URI = '<?php echo __PROD__.__UPLOADDIR__; ?>',
+                ROOT = '<?php echo __ROOT__; ?>',
+                PROD = '<?php echo __PROD__; ?>';
+        </script>
+
         <!-- Custom Script -->
         <script src="<?php echo __JSDIR__; ?>main.js"></script>
 <?php

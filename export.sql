@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `ptp_vip360_user` (
   `password` varchar(250) NOT NULL,
   `image` varchar(250) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `position` (`identifiant`)
+  UNIQUE KEY `position` (`username`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --

@@ -6,4 +6,5 @@ define('__IMGDIR__', __PROD__.'images/');
 define('__CSSDIR__', __PROD__.'css/');
 define('__JSDIR__', __PROD__.'js/');
 
-define('__UPLOADDIR__', dirname(__FILE__).'/../uploads/');
+define('__UPLOADDIR__', 'uploads/');
+define('__UPLOADURL__', dirname(__FILE__).'/../'.__UPLOADDIR__);
