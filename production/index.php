@@ -41,18 +41,20 @@ require_once 'import/header.php';
             </div>
             <?php } ?>
 
-            <?php 
+            <?php
             if(array_key_exists("xmls", $_SESSION) && count($_SESSION['xmls']) === 7) {
-                $key_tmp = key($_SESSION['xmls'][0]);
-                if(strpos($key_tmp, '_') > 0)
-                    $projectName = substr($key_tmp, 0, strpos($key_tmp, '_'));
-                else
-                    $projectName = substr($key_tmp, 0, strpos($key_tmp, '.'));
+                foreach ($_SESSION['xmls'] as $key => $xml) {
+                    if(strpos($key, '_') > 0)
+                        $_SESSION['projectName'] = substr($key, 0, strpos($key, '_'));
+                    else
+                        $_SESSION['projectName'] = $key;
+                    break;
+                }
             ?>
             <div class="col-md-6 col-xs-12" id="xmlFiles_display">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Liste des fichiers XML <small><?php echo $projectName; ?></small></h2>
+                        <h2>Liste des fichiers XML <small><?php echo $_SESSION['projectName']; ?></small></h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                             <li class="dropdown">
@@ -66,14 +68,14 @@ require_once 'import/header.php';
                     </div>
                     <div class="x_content">
                         <ul class="list-unstyled msg_list">
-                            <?php foreach ($_SESSION['xmls'] as $xml_array) { ?>
+                            <?php foreach ($_SESSION['xmls'] as $key => $xml) { ?>
                             <li>
                                 <a>
                                     <span class="image">
-                                        <img src="<?php echo __IMGDIR__.'icon/xml-file.png' ?>" alt="<?php echo key($xml_array); ?>" />
+                                        <img src="<?php echo __IMGDIR__.'icon/xml-file.png' ?>" alt="<?php echo $key; ?>" />
                                     </span>
                                     <span>
-                                        <b><?php echo key($xml_array); ?>.xml</b>
+                                        <b><?php echo $key; ?>.xml</b>
                                     </span>
                                 </a>
                             </li>
@@ -83,7 +85,74 @@ require_once 'import/header.php';
                 </div>
             </div>
 
-            <script type="text/javascript">var PROJECTNAME = '<?php echo $projectName; ?>'</script>
+            <div class="col-md-6 col-xs-12" id="xmlFiles_functions">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Liste des fonctions <small><?php echo $_SESSION['projectName']; ?></small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form action="execute_functions.php" method="post" class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="sr-only">Switch</span></label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <div class="dropdown-toggle-block-form">
+                                        <label>
+                                            <input type="checkbox" class="js-switch" name="functions_selected[]" value="multipleButtonsThree_noViewChange"/> Bouttons triple : pas de changement de vue
+                                        </label>
+                                        <div class="block-form">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="multipleButtonsThree_noViewChange_qty">Quantité</label>
+                                                <div class="col-md-2 col-sm-4 col-xs-12">
+                                                    <input type="number" class="form-control" placeholder="0" min="0" name="multipleButtonsThree_noViewChange_qty" id="multipleButtonsThree_noViewChange_qty">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-toggle-block-form">
+                                        <label>
+                                            <input type="checkbox" class="js-switch" name="functions_selected[]" value="multipleButtonsFour_noViewChange"/> Bouttons quadruple : pas de changement de vue
+                                        </label>
+                                        <div class="block-form">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="multipleButtonsFour_noViewChange_qty">Quantité</label>
+                                                <div class="col-md-2 col-sm-4 col-xs-12">
+                                                    <input type="number" class="form-control" placeholder="0" min="0" name="multipleButtonsFour_noViewChange_qty" id="multipleButtonsFour_noViewChange_qty">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-toggle-block-form">
+                                        <label>
+                                            <input type="checkbox" class="js-switch" name="functions_selected[]" value="multipleButtonsFive_noViewChange"/> Bouttons quintuple : pas de changement de vue
+                                        </label>
+                                        <div class="block-form">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="multipleButtonsFive_noViewChange_qty">Quantité</label>
+                                                <div class="col-md-2 col-sm-4 col-xs-12">
+                                                    <input type="number" class="form-control" placeholder="0" min="0" name="multipleButtonsFive_noViewChange_qty" id="multipleButtonsFive_noViewChange_qty">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                                    <button type="reset" class="btn btn-primary">Réinitialiser</button>
+                                    <button type="submit" class="btn btn-success">Transformer</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <script type="text/javascript">var PROJECTNAME = '<?php echo $_SESSION['projectName']; ?>'</script>
             <?php } ?>
         </div>
     </div>

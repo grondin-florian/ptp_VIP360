@@ -29,6 +29,7 @@
                     <li><a><i class="fa fa-desktop"></i> Ancres de la page <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="#xmlFiles_display"><b>Affichage des XML</b></a></li>
+                            <li><a href="#xmlFiles_functions"><b>Fonctions XML</b></a></li>
                         </ul>
                     </li>
                 </ul>

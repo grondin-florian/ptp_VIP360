@@ -985,7 +985,7 @@ if (device.desktop,
   <action name="onclickbouton1multipleSpot4">
     hidepointsmultipleSpot4();
     set(selectedmultipleSpot4, "bouton1multipleSpot4");
-          mainloadscene(pano39512);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+          mainloadscene(pano39512);
 
 
   </action>
@@ -1002,7 +1002,7 @@ if (device.desktop,
   <action name="onclickbouton2multipleSpot4">
     hidepointsmultipleSpot4();
     set(selectedmultipleSpot4, "bouton2multipleSpot4");
-          mainloadscene(pano39514);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+          mainloadscene(pano39514);
 
 
   </action>
@@ -1019,7 +1019,7 @@ if (device.desktop,
   <action name="onclickbouton3multipleSpot4">
     hidepointsmultipleSpot4();
     set(selectedmultipleSpot4, "bouton3multipleSpot4");
-          mainloadscene(pano39533);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+          mainloadscene(pano39533);
 
 
   </action>
@@ -1036,7 +1036,7 @@ if (device.desktop,
   <action name="onclickbouton4multipleSpot4">
     hidepointsmultipleSpot4();
     set(selectedmultipleSpot4, "bouton4multipleSpot4");
-          mainloadscene(pano49);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+          mainloadscene(pano49);
 
 
   </action>
@@ -1338,7 +1338,7 @@ if (device.desktop,
   <action name="onclickbouton1multipleSpot41">
     hidepointsmultipleSpot41();
     set(selectedmultipleSpot41, "bouton1multipleSpot41");
-          mainloadscene(pano39519);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+          mainloadscene(pano39519);
 
 
   </action>
@@ -1355,7 +1355,7 @@ if (device.desktop,
   <action name="onclickbouton2multipleSpot41">
     hidepointsmultipleSpot41();
     set(selectedmultipleSpot41, "bouton2multipleSpot41");
-          mainloadscene(pano39520);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+          mainloadscene(pano39520);
 
 
   </action>
@@ -1372,7 +1372,7 @@ if (device.desktop,
   <action name="onclickbouton3multipleSpot41">
     hidepointsmultipleSpot41();
     set(selectedmultipleSpot41, "bouton3multipleSpot41");
-          mainloadscene(pano39521);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+          mainloadscene(pano39521);
 
 
   </action>
@@ -1389,7 +1389,7 @@ if (device.desktop,
   <action name="onclickbouton4multipleSpot41">
     hidepointsmultipleSpot41();
     set(selectedmultipleSpot41, "bouton4multipleSpot41");
-          mainloadscene(pano49);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+          mainloadscene(pano49);
 
 
   </action>
@@ -1691,7 +1691,7 @@ if (device.desktop,
   <action name="onclickbouton1multipleSpot5">
     hidepointsmultipleSpot5();
     set(selectedmultipleSpot5, "bouton1multipleSpot5");
-          mainloadscene(pano39518);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+          mainloadscene(pano39518);
 
 
   </action>
@@ -1708,7 +1708,7 @@ if (device.desktop,
   <action name="onclickbouton2multipleSpot5">
     hidepointsmultipleSpot5();
     set(selectedmultipleSpot5, "bouton2multipleSpot5");
-          mainloadscene(pano39517);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+          mainloadscene(pano39517);
 
 
   </action>
@@ -1725,7 +1725,7 @@ if (device.desktop,
   <action name="onclickbouton3multipleSpot5">
     hidepointsmultipleSpot5();
     set(selectedmultipleSpot5, "bouton3multipleSpot5");
-          mainloadscene(pano39515);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+          mainloadscene(pano39515);
 
 
   </action>
@@ -1742,7 +1742,7 @@ if (device.desktop,
   <action name="onclickbouton4multipleSpot5">
     hidepointsmultipleSpot5();
     set(selectedmultipleSpot5, "bouton4multipleSpot5");
-          mainloadscene(pano39516);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+          mainloadscene(pano39516);
 
 
   </action>
@@ -1759,7 +1759,7 @@ if (device.desktop,
   <action name="onclickbouton5multipleSpot5">
     hidepointsmultipleSpot5();
     set(selectedmultipleSpot5, "bouton5multipleSpot5");
-          mainloadscene(pano49);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+          mainloadscene(pano49);
 
 
   </action>

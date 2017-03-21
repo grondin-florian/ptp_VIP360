@@ -5,3 +5,7 @@
 .site_title i {
 	border: medium none;
 }
+
+.dropdown-toggle-block-form > .block-form {
+	display: none;
+}

@@ -39,7 +39,8 @@ jQuery(document).ready(function($) {
             {
                 $.ajax(PROD + 'form_upload.php', {
                     data: {
-                        projectName: PROJECTNAME
+                        projectName: PROJECTNAME,
+                        deleteFiles: true
                     },
                     success: function(result) {
                         location.reload();
@@ -47,7 +48,17 @@ jQuery(document).ready(function($) {
                 });
             }
         });
+        $('.dropdown-toggle-block-form').off('click').click(function() {
+            var blockForm = $(this).find('.block-form'),
+                checkbox = $(this).find('input[type=checkbox]');
 
-        // TODO : Fixed #xml-sidebar
+            if(checkbox.is(':checked'))
+                blockForm.fadeIn();
+            else
+                blockForm.fadeOut();
+        });
+        $('#xmlFiles_functions button[type=reset]').click(function(){
+            $('#xmlFiles_functions form').reset();
+        });
     }
 });

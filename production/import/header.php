@@ -20,6 +20,7 @@ if($_SERVER['REQUEST_URI'] != __PROD__.'login.php')
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="<?php echo __PROD__; ?>favicon.ico" />
 
     <title><?php echo $title_page; ?></title>
 
@@ -29,6 +30,18 @@ if($_SERVER['REQUEST_URI'] != __PROD__.'login.php')
     <link href="<?php echo __ROOT__; ?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="<?php echo __ROOT__; ?>vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="<?php echo __ROOT__; ?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-wysiwyg -->
+    <link href="<?php echo __ROOT__; ?>vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="<?php echo __ROOT__; ?>vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="<?php echo __ROOT__; ?>vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+    <!-- starrr -->
+    <link href="<?php echo __ROOT__; ?>vendors/starrr/dist/starrr.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="<?php echo __ROOT__; ?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     <!-- Animate.css -->
     <link href="<?php echo __ROOT__; ?>vendors/animate.css/animate.min.css" rel="stylesheet">
     <!-- Dropzone.js -->
