@@ -16,33 +16,41 @@ function deleteLookAt($idElement, $qty, $project_name) {
 	$nbrHotspot = substr($idElement, -1);
 	$panoID = array();
 
+	$_SESSION[$project_name.'_skin'] = array();
 	for ( $q = 0 ; $q < $qty ;  $q++ )
 	{
 		$q = ( $q === 0 ? '' : $q );
 		for( $i = 1 ; $i <= $nbrHotspot ; $i++ )
 		{
 			//-- Correct _skin file
-			$stringOrigin_skin = XMLTools::getStringPartUnchanged($_SESSION['xmls'][$project_name.'_skin'], '<action name="onclickbouton'.$i.$idElement.$q.'">', '</action>');
-			if($stringOrigin_skin === false)
-				continue;
+			$stringOrigin_skin = XMLTools::getStringPartUnchanged($_SESSION['xmls'][$project_name.'_skin'], $project_name.'_skin', '<action name="onclickbouton'.$i.$idElement.$q, '</action>');
+			//-- Save affected panoID
 			array_push($panoID, ( preg_match('/mainloadscene\((.*?)\)\;lookat/', $stringOrigin_skin, $panoIDtmp) ? $panoIDtmp[1] : null ));
 			$newString_skin = XMLTools::getReplacedStringPart($stringOrigin_skin, 'lookat(', '.fov));', '');
-			$_SESSION['xmls'][$project_name.'_skin'] = str_replace($stringOrigin_skin, $newString_skin, $_SESSION['xmls'][$project_name.'_skin']);
+			//-- Apply modifications and save the string modified in new array to compare with for further modifications
+			//$_SESSION['xmls'][$project_name.'_skin'] = str_replace($stringOrigin_skin, $newString_skin, $_SESSION['xmls'][$project_name.'_skin']);
+			$_SESSION[$project_name.'_skin'] = array_merge($_SESSION[$project_name.'_skin'], array($stringOrigin_skin => $newString_skin));
 		}
 	}
+	var_dump($project_name.'_skin');
+	$_SESSION[$project_name.'_skin'] = array_unique($_SESSION[$project_name.'_skin']);
+	var_dump($_SESSION[$project_name.'_skin']);
 
 
-	//-- Correct base file if not already corrected
+	//-- Correct "base" file
 	$panoID = array_unique($panoID);
-	$xml = $_SESSION['xmls'][$project_name];
+	$_SESSION[$project_name] = array();
 	foreach ($panoID as $id)
 	{
-		$stringOrigin = XMLTools::getStringPartUnchanged($xml, '<scene name="'.$id.'"', '</scene>');
+		$stringOrigin = XMLTools::getStringPartUnchanged($_SESSION['xmls'][$project_name], $project_name, '<scene name="'.$id.'"', '</scene>');
 		$newString = XMLTools::getReplacedStringPart($stringOrigin, '<panoview', '" />', '');
 		$newString2 = XMLTools::getReplacedStringPart($newString, 'hlookat="', '/>', '/>');
-		$xml = str_replace($stringOrigin, $newString2, $xml);
+		//$_SESSION['xmls'][$project_name] = str_replace($stringOrigin, $newString2, $_SESSION['xmls'][$project_name]);
+		$_SESSION[$project_name] = array_merge($_SESSION[$project_name], array($stringOrigin => $newString2));
 	}
-	$_SESSION['xmls'][$project_name] = $xml;
+	var_dump($project_name);
+	$_SESSION[$project_name] = array_unique($_SESSION[$project_name]);
+	var_dump($_SESSION[$project_name]);
 }
 
 
@@ -77,6 +85,7 @@ if(array_key_exists('functions_selected', $_POST))
 		}
 	}
 
+	die();
 	XMLTools::updateXMLFiles($_SESSION['xmls']);
 	XMLTools::downloadXMLFiles($_SESSION['xmls'], $project_name);
 }

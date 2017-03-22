@@ -8,3 +8,5 @@ define('__JSDIR__', __PROD__.'js/');
 
 define('__UPLOADDIR__', 'uploads/');
 define('__UPLOADURL__', str_replace('\\', '/', dirname(__FILE__)).'/../'.__UPLOADDIR__);
+
+define('__TIMEBEFOREDELETE__', 28800);

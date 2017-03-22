@@ -12,7 +12,7 @@ require_once 'import/header.php';
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Traitement des fichiers XML</h3>
+                <h3>Traitement des fichiers XML <small>XML supprimés après <?php echo __TIMEBEFOREDELETE__; ?>s</small></h3>
             </div>
         </div>
 

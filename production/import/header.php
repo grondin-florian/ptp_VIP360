@@ -3,6 +3,7 @@
 require_once 'config.php';
 
 session_start();
+XMLTools::deleteOldXMLFiles();
 
 if($_SERVER['REQUEST_URI'] != __PROD__.'login.php')
 {

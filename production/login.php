@@ -66,6 +66,13 @@ if(array_key_exists('username', $_POST) && trim($_POST['username']) != ''
                     <div class="clearfix"></div>
 
                     <div class="separator">
+                        <p class="change_link">Nouveau sur le site?
+                          <a href="#signup" class="to_register">Créer compte</a>
+                        </p>
+
+                        <div class="clearfix"></div>
+                        <br />
+
                         <div>
                             <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
                             <h2><img src="images/icon/logo-groupe-vip-360.png" class="img-responsive" alt="Groupe VIP360" title="Groupe VIP360" /></h2>
@@ -75,6 +82,38 @@ if(array_key_exists('username', $_POST) && trim($_POST['username']) != ''
                 </form>
             </section>
         </div>
+
+        <div id="register" class="animate form registration_form">
+            <section class="login_content">.
+                <form>
+                    <h1>Identifiant</h1>
+                    <div>
+                        <input type="text" class="form-control" placeholder="Identifiant" required="" value="techniqueVIP360" />
+                    </div>
+                    <div>
+                        <input type="email" class="form-control" placeholder="Email" required="" value="YWBT9ACIJMh12DFN" />
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="separator">
+                        <p class="change_link">Déjà membre ?
+                          <a href="#signin" class="to_register">Page de connexion</a>
+                        </p>
+
+                        <div class="clearfix"></div>
+                        <br />
+                        
+                        <div>
+                            <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
+                            <h2><img src="images/icon/logo-groupe-vip-360.png" class="img-responsive" alt="Groupe VIP360" title="Groupe VIP360" /></h2>
+                            <p>©<?php echo date('Y'); ?> Tous droits réservés.</p>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+
     </div>
 </div>
 

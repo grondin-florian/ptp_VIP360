@@ -9,3 +9,11 @@
 .dropdown-toggle-block-form > .block-form {
 	display: none;
 }
+
+ul.msg_list li a {
+	width: 100%;
+}
+
+#xmlFiles_display ul.msg_list li:last-child {
+	padding: 5px;
+}

@@ -20,5 +20,5 @@ if(array_key_exists('file', $_FILES))
 
 if(array_key_exists('projectName', $_GET) && array_key_exists('deleteFiles', $_GET))
 {
-	XMLTools::ClearXMLFilesAndSession();
+	XMLTools::clearXMLFilesAndSession();
 }
